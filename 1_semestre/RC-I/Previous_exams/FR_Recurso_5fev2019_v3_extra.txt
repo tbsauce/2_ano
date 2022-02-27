@@ -1,0 +1,71 @@
+1-> n sai
+
+2-> n deve sair i guess
+
+3-> 
+		 			200.0.0.192/26        		64 enderecos
+		200.0.0.192/27				200.0.0.224/27	32 enderecos
+	200.0.0.192/28		200.0.0.208/27				16
+				Lan B
+200.0.0.192/29	200.0.0.200/29						8
+	Vlan1	NAt
+
+4-> 	caso se pretenda que enderecos privados tenham conectividade com a internet e necessario o Nat
+	ou Nat/pat caso se pretenda usar as portas, este mecanismo na forma dinamica serve para dar 
+	ip publicos temporariamente ou portas ,no caso do uso de pat, isto fara com que o exterior veja
+	estes terminais com ip publicos apesar destes serem privado razendo mais seguranca.
+	caso se pretenda ter um ip privado num servidor privado este nat nao pode ser dinamico mas 
+	sim estatico uma vez que o seu ip publico oferecido pelo nat n pode mudar para poder ser
+	constantemente usado por pessoas vindas da internet.
+
+5->  tera de se configurar o DNS indo ao ficheiro db.nomedo server.com com AAAA que corresponde ao ipv6
+	e mai nada bruhh n sei
+
+
+6-> seshhh n sei nao sai
+
+7->what a acual fuck eu n sei onde a o vlan1 mas diria que e o MAC o L3A como origem e L3B como destino 
+	nao? n sei e deve ter um protocolo mas nesse protocolo esta os ip Vlan1 como origem e vlan22 como destino
+	i guess
+
+8->
+rede 		masc		hop		int
+10.2.3.0	255.255.255.252 direct		f0/0
+10.20.0.192	255.255.255.192 10.2.3.2	f0/0
+n vou fazer masi sou preguicoso
+
+;=)
+
+9->chupaimos ================> .l.
+
+10-> e necessario cria uma zona no ficheito name.conf.local para o domino Empresa2019.com
+	e neste ficheiro dizer q ligacao ao seu feiheiro db.Empresa2019.com nestes db e necessario 
+	criar a ligacao dos ip ao dominio root e as extensoes deste como www.Empresa2019.com
+	WebMail.Empresa2019.com etc tbm neste ficheiro e necessario destinguir o email com MX 
+	da web page com A(IPV4) e para o Ipv6 e necessario fazelo com AAAA, ANtes de passar
+	ao proximo passo e necessario dar 2 ips a cada um uma vez que ha dois servidores.De seguida e apenas necessario
+	criar uma pag web e colocana dentro de uma pasta em var/www/html e de seguida ir ao serivico apache
+	em etc/apache2/sitesavailable e dizer a que dominios correspondem cada html por exemplo Empresa2019.com
+	o seu html esta em va/www/html/index.html
+
+11-> 	SQ=10000 
+
+a->	CWND = 4MSS = 5600
+	MSS= 1400´
+	RWND= 6000
+	NACK= 1400
+	
+	AWND=min(5600-1400, 6000)=4200
+	
+	4200/500= 8.4 = 8 pacotes
+
+b-> 	60000-10000= 50000-2= 59998
+
+12->	Nao uma vez que este servidor tem apenas 2 ip e n se pode conectar com o msm ip e msm porta ao msm server
+	isto seria apenas possivel se a porta fosse diferente ou existisse um ip a mais para se usar
+	BIGBRAIN
+
+13->	Este problema tem haver com a localizaçao do ficehiro ou a mal configuracao da rede para o encanimamento 
+	para o ficehiro pois quando houve resposta 404 quer dizer que o site n foi encontrado e 200 que este abriu corretamente
+	
+14->	FUCK that 

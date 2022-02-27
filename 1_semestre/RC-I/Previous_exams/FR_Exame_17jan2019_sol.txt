@@ -1,0 +1,82 @@
+1-> n sai
+
+2-> n sai
+
+3->	os terminais que usam o SW 15 serao implementados na SW 13 conectanto
+	o MAC dos msm a porta 3
+
+4->
+	vlan1 36
+	lab b 200
+	nat mais alguns 
+				
+
+					173.0.128.0/23
+		173.0.128.0/24					173.0.129.0/24
+
+	173.0.128.0/25  	173.0.128.128/25		     lan b
+				livre
+
+173.0.128.0/26	173.0.128.0/26	
+vlan			nat
+
+5->	Estes necessitariam de usar NAT/PAT este mecanismo traduz os ips privados dos vlans para 
+	ips publicos mas como estes tem portas dif poderam usar ambos o msm ip mas tem portas dif
+	correspondeste a cada um
+
+6->	Selective repeat uma ve que apos um erro ele continua a enviar o resto da data e a guardala no buffer
+	so apos de o erro ser reconhecido e que envia essa data e volta onde estava sem perder tempo 
+	este processo e usado no tcp
+
+7->
+	send 1960
+	indentifier= 555
+	MTU = 1000
+	
+	1000-20= 980 -> data que pode enviar
+	980-8 = 972
+
+	indet=555 frag offset= 0 flags=1  	DATA 972	
+	indet=555 frag offset= 980 flags=1	data =980
+	indet=555 frag offset= 1960 flags=1	data = 8
+	
+	
+
+------------------------------------------------------
+
+1-> sei fazer mas nn sei se resulta em trunk
+
+2-> E formado um IP Datagram com a internet como destino(IP) e origem router 3(IP) em seguida 
+	a medida que o pacote percorre as interfases e criado um pacote dif para cada ligacao 
+	dif ethernet datagram com origem MAc e dest mac das interfases onde precisa se conectar
+
+3->	Nao sei
+
+4->	nao sei
+
+5->	dar o endereco ip a este dominio e criar um html corresponde te ao msm´
+ 
+6->	???
+
+7->	Sq= 2000
+
+a->
+	CWND= 3MSS = 4200
+	MSS = 1400
+	RWND = 2000
+	
+	NACK= 200
+
+	AWND=min(4200-1400, 2000)=min(2800, 2000)
+	AWND= 2000
+
+	2000/200 = 10 pacotes
+
+b-> quando houver uma msg Ack repetida 3 vezes este considera que este pacote foi perdido retransmitindo o de seguida
+	ou passado tempo defenido no router
+ 
+c-> 10200-2000-1-1= 8198
+
+8-> na sei n sei
+
+9-> epha pq sim :) fixe

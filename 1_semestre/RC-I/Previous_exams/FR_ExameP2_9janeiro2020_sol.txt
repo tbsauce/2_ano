@@ -1,0 +1,47 @@
+1 -> caga
+
+2-> mais um
+
+3->.........
+
+4->hehe
+ 
+5->	e necessario cria uma zona no ficheito name.conf.local para o domino Empresa2020.com
+	e neste ficheiro dizer q ligacao ao seu feiheiro db.Empresa2020.com nestes db e necessario 
+	criar a ligacao dos ip ao dominio root e as extensoes deste como www.Empresa2020.com
+	WebMail.Empresa2020.com etc tbm neste ficheiro e necessario destinguir o email com MX 
+	da web page com A(IPV4) e da cloud Ipv4 A tbm isto tudo na parte NS tbm e necessario meter AAAA
+	para poder ser conecataco a ipv6
+
+6->	SQ= 5000
+
+a->
+	CWND = 10 MSS= 14000
+	mss = 1400
+	RWND=  20000
+
+
+	AWND=min(14000-1400, 20000)=12600
+
+	12600/1000= 12.6 = 12 pacotes inteiros
+
+b->
+	CWND=20000 
+	RWND= 15000
+	NACK=4000
+	
+	AWND = min(20000-4000, 15000)=15000
+	15000/1000= 15
+c->
+	100000-5000-2=94998
+
+7->	Theading e muitp importante para ter multiplos clientes a enivar ou receber informacao do
+	msm server pois este forncenos a abilidade de correr diferentes partes de um programa ao
+	msm tempo por exemplo o listen() a espera de novos clientes e uma funcao de rececao de informacao
+	do server estes duas funcoes e instrucoes n seriam possiveis realizar ao msm tempo sem o threading.7
+
+8->	404 n costumam ser devido a nenhum probkema na rede mas pode ser pq nos escrevemos mal o dominio que queremos
+	alcancar ou apagamos a pagina ou tem um problema no web site. logo este problema e do cliente
+	se o problema fosse por causa do server a reposta seria no range dos 500
+
+9-> vai te foder com estas perguntas

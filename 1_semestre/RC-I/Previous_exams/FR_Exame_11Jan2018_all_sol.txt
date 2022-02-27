@@ -1,0 +1,89 @@
+1
+a->
+	os SW tem memoria e por esta razao conseguem guardar a que terminais estam ligados as
+	suas portas construindo uma tabela de switching, esta funcionalidade faz com os SW 
+	diminuia as colisoes ate 0.
+
+	E este tbm configura a tabela arp dinamicamente fazendo com que as portas se possam mudar a vontade.
+b -> 	n sai mas o back N n tem memoria por esta razao os pacotes enviados apos o erro n sao guardados
+	logo a perda de tempo enquanto n e enviado o pacote que deu erro. Por esta razao n usaria
+	este processo uma vez que o selective repeat e muito melhor pois este n perde os pacotes enviados apos o erro
+	guardando os no buffer
+
+c ->  	Numa Rede pequena optaria por um SW uma vez que este e mais rapido que um Router em uma
+	LAN. LOgo sim SW nesta rede pequena tem vantagens e da menos trabalho
+
+d ->	O NAt em relacao a ip publico tem mais seguranca
+
+e -> 	Nos datagram de um pacote existem uma blocos que correspondem as flags e um desses blocos tem 
+	o nome de fragment offset que corresponde ao deslocamento do fragemento logo o terminal apos receber
+	este datagram organiza usando este bloco para alem disto estes pacotes sabem que estam juntos pois tem o msm id
+
+
+2
+
+Nao sai acho
+
+--------------
+
+1-> n sai
+
+2-> Nao sai
+
+3-> n entendo
+
+4-> gestor de redes tem que criar no server da empresa um registo SOA que
+    contem o novo domain assim como  as configurações do servidor dns
+
+5 -> atraves de subdomineos criados no registo soa do dns serer 
+
+6
+send = 4230 bytes
+a-> 
+MSS = 1000
+2/SQ = 20
+CWND = 10 MSS = 10000
+RWND = 64 KBytes= 64000
+AWND = min(10000, 64000)=10000
+AWND=min(CWND-NACK, RWND)
+
+
+		comecar
+		SQ = 0 ak=0  SYN
+			SQ = 0 Ak= 1 SYN/ACK
+		SQ = 1 AK =1	ACK
+
+		dados
+		data= 1000 SQ = 1 AK = 1		AWND=9000
+			SQ = 1 AK = 1001	ACK	
+		
+		data= 1000 SQ = 1001 AK = 1		AWnd()
+			SQ = 1 AK = 2001	ACK
+
+		data= 1000 SQ = 2001 AK = 1
+			SQ = 1 AK = 3001	ACk
+
+		data= 1000 SQ = 3001 AK = 1
+			SQ = 1 AK = 4001	ACK
+
+		data= 230 SQ = 4001 AK = 1
+			SQ = 1 AK = 4231	ACK
+
+		Terminar
+		SEQ = 4231	  Fyn
+			SEQ = 1 ACK= 4232 ACK
+			
+			SEQ= 1 FYN
+		SEQ = 4232 ACK = 2 ACK
+
+b-> 	o Tcp apos receber o 3 pacote duplicado ou passado um certo periodo de tempo reconhece que este foi perdido e logo asseguir desse 3 msg
+	enviada ele envia o pacote perdido e depois volta ao seguinte pacote que necessita.
+	CWND sera igual a CWND/2 pq e modelo RENO
+
+7->	
+a-> n sai a guess
+
+b -> a pasta de html maybe mal criada ou url mal escrito
+
+8
+Chupamos tbm n sei se sai

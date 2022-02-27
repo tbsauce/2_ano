@@ -1,0 +1,52 @@
+1->
+a-> ond down
+
+b->	A conectividade entre o pc A e o pc B e possivel se nos routers R1, R2 e R3 
+	existir rotas pre configurasdas pelo utilizador de forma estatica. tbm e possivel
+	configurar os routers para fazerem isto de forma dinamica.
+
+c->	two down
+
+d->	Sim e possivel uma vez que estas sessoes comecam com portos diferentes.
+
+e->
+	RWND = 10000
+	MSS=1000
+	SQA=20 
+	SQB=30
+	
+	a->b = 9000
+	b->a= 2500
+	
+	(o envio de pacotes depende do que enviou anteriormente + 
+	os ACKs que recebeu )
+	(caso haja um erro este volta a 1 e o slow start para a metade da
+	CWND anterior)
+	
+	envia um pacote
+	e recebe um ACK 
+
+	envia 2 pacotes
+	recebe dois acks
+
+	envia 4 pacotes
+	recebe quatro acks 
+
+f-> 	Para comecar apos haver uma perda este volta a 1 enviar apenas
+	um pacote e faz slow start ate metada da CWND onde ouve erro
+	este primeiro pacote devera ser o que deu erro
+
+g->	O arp atraves do ip vai buscar o MAC e o DNS atraves do IP vai
+	buscar o nome. Para alem disso o Dns tbm tem uma tabela de encaminhamento
+	que conecta os nomes ao ip
+
+h->	vai te foder puta amanha 
+
+i-> n faco puta ideia
+
+j-> sheshhh
+
+k-> 	640kbits
+
+
+		

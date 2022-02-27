@@ -1,0 +1,68 @@
+1-> masi cenas que n saem achoooo
+
+2->pfffff, aposto que tbm n dei por isso que sa foda
+
+3->	sjhesdasda 
+
+4->	mais uma carlh
+
+5->	
+				223.174.8.0/22
+		223.174.8.0/23			223.174.10.0/23
+	223.174.8.0/24   	223.174.9.0/24	   223.174.10.0/24 	223.174.11.0/24
+223.174.8.0/25	223.174.8.128/25
+
+6-> boa pergunta e concordo
+
+7->	MACA resumindo este protocolo faz um RTS para ver se a rede esta available e de seguida um
+	CTs esta e a resposta do outro pc para confirmar que pode haver transferencia de informacao
+
+8-> 	
+
+-----------------
+1-> sheshhh
+	n tenho mac n faco minima
+
+
+2-> n e materia acho
+
+3->	bruuuhhh masi uma
+
+4->	masi uma merad
+
+5-> 	Em prieimeiro lugar e necessario criar uma zona generica
+	para o dominio adicionando a localizaçao do ficheiro de
+	configuração SOA e defenilo como zone master o server dns. Neste
+	 ficheiro e preciso fazer subdominios como webmail.redes2020.com
+	e associar os mesmo com o seu IPv4(A), Ipv6(AAAA) e mail (MX).
+	O server http deve ter o caminho para a pasta do web site(HTML)
+	na pasta apache2  e neste caminho tem o html criado por ti sua vaca
+
+6->	SQ=10000 	Reno
+
+a->	CWND= 5 MSS= 7500
+	Mss = 1500
+	RWND = 10000
+	NACK=0
+
+	AWND = min(7500-0, 10000)= 7500
+	
+	7500/1000=7.5 = 7 pacotes completos
+
+b-> CWND = 30000
+	RWND = 15000
+	NACK=20000
+	AWND = min(30000-20000, 15000)= 10000
+
+	10000/1000= 10
+
+c-> 50000 - 10000= 40000-2= 39998
+
+7-> 	e possivel desde que estes temham mais 3 PC com ips diferentes a escuta
+
+8-> 	ao recerber este pedido ele tem de enviar um o html root uma vez que / corresponde ao
+	root, para alem disto ele tem de ler o host para saber qual server apache escolher
+	apos saber qual precisa de pegar esta pega no root e envia uma resposta com 200(ok) e o
+	conteudo que foi pedido
+
+9-> n deve sair

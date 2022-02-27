@@ -1,0 +1,50 @@
+1-> ho fuck
+
+2-> HERE we go again
+
+3->
+			200.0.0.128/25
+	200.0.0.128/26			200.0.0.192/26	64
+						lanB
+200.0.0.128/27	200.0.0.160/27
+vlan 1			nat
+
+4-> Usando o protocolo NAT/pat estes terminais tem ambos um up privado e uma porta cada 
+	um ao chegar ao nat/pat este fornece uma traducao para ip publico 
+	e uma traducao das portas de cada um podendo entao se reutilizar o msm 
+	ip publico para ambos tendo apenas os 2 duas portas diferentes e um ip publico igual.
+
+
+
+6->	N SAI MANO
+
+7->	Ira ser criada uma zona que liga o dominio Company2018.pt a um ficheiro cirado pelo 
+	developer por exemplo db.Company2018.pt em seguida abrir este ficheio e ligar o IP 
+	ao dominio por exemplo www.Company2018.pt , Webmail.Company2018.pt e meter ipv4 com A,
+	AAAA para ipv6, MX para o Email. EM seguida para cirar o HTTP e necessario criar um ficheiro
+	html na pasta var/www/html e depois conectar este ficherio ao dominio Company2018.pt
+	num ficheiro criado por nos na zona etc/apache2/sites-available.
+
+8->	sq=1200
+a->
+
+b->	Cwnd= 2 MSS = 2800
+	MSS = 1400
+	RWND= 1000
+	
+	AWND = min(2800-1400, 1000)= 1000
+	
+	1000/100=10
+c->	asseguir da 3 msg ack repetida o o terminal conclui que o pacote foi perdido
+
+d->	8700-1200-2= 7498
+
+9->	e possivel uma vez que existe mais um ip para ser usado logo usando a biblioteca 
+	threading que da possibilidade de mais que um cliente estar a ouvir
+
+10->	Isto n revela nada apenas que o servidor esta a funcionar com sucesso uma vez que a resposta 
+	e 200
+
+11->	n demososososos
+
+12->	U give a example :=))

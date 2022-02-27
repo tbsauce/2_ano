@@ -1,0 +1,34 @@
+1->
+a->	nao sai 
+
+b-> 	MACA e um mecanimo para minimizar as colisoes este e usado em wireless.
+	este consiste no envio de dois pacotes RTS e CTS, RTS tem como objetivo
+	enviar um pedido para saber se o espaco esta livre para enviar informação
+	entao este so pode comecar a troca de informaçao apos receber um RTS.
+
+c->	
+2->
+o resto n 	
+e->	Para organizaçao melhor dos endereços o gestor deve fazer subneting 
+	dividindo a rede por partes, apesar de haver perda de enderecos para o broadcast
+	e para o hostid.
+
+
+g->	ICMP=2000
+	MTU=900
+	Id=25
+	
+	2000/900 = 3 
+	
+	900-20= 880 visto que 20 bytes sao cabecalho
+
+	880-8 = 872  8 bytes ICMP
+
+	id= 25	fragment offset= 0	flags=1  
+	id= 25	fragment offset= 880	flags=1
+	id= 25	fragment offset= 1760	flags=0	
+
+h->
+
+i->	
+	

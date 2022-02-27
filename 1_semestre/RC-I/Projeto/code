@@ -1,0 +1,256 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------
+IPV4:
+R0:
+
+conf t
+ipv6 unicast-routing	
+int f0/0
+ip address 200.134.144.190 255.255.255.192
+ip address 10.144.1.254 255.255.255.0 secondary
+ipv6 address 2001:00:1::/64 eui-64
+ipv6 enable
+no shutdown
+
+int f0/1
+ip address 200.134.144.222 255.255.255.224
+ip address 10.144.2.254 255.255.255.0 secondary
+ipv6 address 2001:00:2::/64 eui-64
+ipv6 enable
+no shutdown
+
+int f1/0
+ip address 10.144.0.1 255.255.255.0
+ipv6 address 2001:00::/64 eui-64
+ipv6 enable
+no shutdown
+end
+write
+
+
+
+f0/0:
+conf t
+service dhcp
+ip dhcp excluded-address 10.144.1.0
+ip dhcp excluded-address 10.144.1.255
+ip dhcp pool 1
+network 10.144.1.0 255.255.255.0
+default-router 10.144.1.254
+end
+write
+
+f0/1:
+conf t
+service dhcp
+ip dhcp excluded-address 10.144.2.0
+ip dhcp excluded-address 10.144.2.255
+ip dhcp pool 2
+network 10.144.2.0 255.255.255.0
+default-router 10.144.2.254
+end
+write
+
+Route:
+conf t
+ip route 220.3.4.4 255.255.255.252 10.144.0.2
+ip route 203.0.0.0 255.255.255.0 10.144.0.2
+
+ipv6 route 2200:3:4:4::4/126 2001::C802:10FF:FE83:8
+ipv6 route 2300:a:a:a::/64 2001::C802:10FF:FE83:8
+end 
+write
+
+_______________________________________________________________________________________________________________________________________________
+
+R1:
+
+conf t
+ipv6 unicast-routing
+int f0/0
+ip address 10.144.0.2 255.255.255.0
+ipv6 address 2001:00::/64 eui-64
+ipv6 enable
+no shutdown
+
+int f0/1
+ip address 220.3.4.5 255.255.255.252
+ipv6 address 2200:3:4:4::4/126 eui-64
+ipv6 enable
+no shutdown
+end
+write
+
+Route:
+conf t
+ip route 10.144.1.0 255.255.255.0 10.144.0.1
+ip route 10.144.2.0 255.255.255.0 10.144.0.1
+ip route 200.134.144.128 255.255.255.192 10.144.0.1
+ip route 200.134.144.192 255.255.255.224 10.144.0.1
+ip route 203.0.0.0 255.255.255.0 220.3.4.6
+           
+ipv6 route 2001:00:1::/64 2001::C801:10FF:FE73:1C
+ipv6 route 2001:00:2::/64 2001::C801:10FF:FE73:1C
+ipv6 route 2300:a:a:a::/64 2200:3:4:4::4
+end
+write
+
+NAT/PAT:
+conf t
+ip nat pool RCPOOL 200.134.144.225 200.134.144.238 netmask 255.255.255.240
+access-list 2 permit 10.144.0.0 0.0.255.255 
+
+ip nat inside source list 2 pool RCPOOL overload
+
+int f0/0 
+ip nat inside
+int f0/1
+ip nat outside
+end
+write
+
+_______________________________________________________________________________________________________________________________________________
+
+ISP:
+
+conf t
+ipv6 unicast-routing
+int f0/0
+ip address 220.3.4.6 255.255.255.252
+ipv6 address 2200:3:4:4::4/126 eui-64
+ipv6 enable
+no shutdown
+
+int f0/1
+ip address 203.0.0.1 255.255.255.0
+ipv6 address 2300:a:a:a::/64 eui-64
+ipv6 enable
+no shutdown
+end
+write
+
+Route: 
+conf t
+ip route 200.134.144.128 255.255.255.128 220.3.4.5
+  
+ipv6 route 2001:00::/64 2200:3:4:4::6                       
+ipv6 route 2001:00:1::/64 2200:3:4:4::6
+ipv6 route 2001:00:2::/64 2200:3:4:4::6
+end
+write
+
+
+_______________________________________________________________________________________________________________________________________________
+
+VM:
+
+
+DNS-------------
+sudo su
+cd /etc/bind/
+vim named.conf.local
+	
+		zone "projfinal.pt" in{
+			type master;
+			file "/etc/bind/db.projfinal.pt";
+
+		records
+		};
+	
+vim db.projfinal.pt
+
+		$TTL 604800 
+		$ORIGIN projfinal.pt.
+		@	IN	SOA	ns1.projfinal.pt. adm.projfinal.pt. (
+					2 		
+					604800
+					86400
+					2419200
+					604800)
+	IN	NS	ns1.projfinal.pt.
+ns1	IN 	A	200.134.144.133
+@	IN 	A	200.134.144.133
+www	IN 	A	200.134.144.133
+design	IN 	A	200.134.144.133
+marketing	IN 	A	200.134.144.133	
+		
+systemctl restart bind9
+				
+				
+http-------------------			
+
+cd /var/www/html
+
+mkdir projfinal.pt-80
+cd projfinal.pt-80
+
+vim index.html
+		<html>
+		<body>
+		<h1>Projeto Final</h1>
+		</body>
+		</html>
+		
+		
+mkdir design_projfinal.pt-80
+cd design_projfinal.pt-80
+
+vim index.html
+		<html>
+		<body>
+		<h1>Design</h1>
+		</body>
+		</html>
+
+
+mkdir marketing_projfinal.pt-80
+cd marketing_projfinal.pt-80
+
+vim index.html
+		<html>
+		<body>
+		<h1>Marketing</h1>
+		</body>
+		</html>
+
+cd /etc/apache2/sites-available/
+
+vim projfinal.pt-80.conf
+	
+		<VirtualHost *:80>
+		DocumentRoot /var/www/html/projfinal.pt-80
+		ServerName projfinal.pt
+		ServerAlias www.projfinal.pt
+		</VirtualHost>
+
+vim design_projfinal.pt-80.conf
+	
+		<VirtualHost *:80>
+		DocumentRoot /var/www/html/design_projfinal.pt-80
+		ServerName design.projfinal.pt
+		</VirtualHost>
+
+vim marketing_projfinal.pt-80.conf
+	
+		<VirtualHost *:80>
+		DocumentRoot /var/www/html/marketing_projfinal.pt-80
+		ServerName marketing.projfinal.pt
+		</VirtualHost>
+
+a2ensite projfinal.pt-80
+a2ensite marketing_projfinal.pt-80
+a2ensite design_projfinal.pt-80
+systemctl restart apache2
+		
+		
+VM de teste
+
+cd /etc
+vim resolv.conf
+nameserver 200.134.144.133
+
+
+Extra-------------------------
+
+sudo cp -r /home/labcom/Downloads/startbootstrap-coming-soon-gh-pages/* .
+
+
