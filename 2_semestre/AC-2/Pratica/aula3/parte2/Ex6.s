@@ -25,25 +25,29 @@ main:
     sw      $s3, 16($sp)
     
     lui     $s0, SFR_BASE_HI    #Base
-    li      $s3, 0              #count = 0
+    li      $s3, 0x0000         #shif = 0
 
     lw      $s1, TRISE($s0)        
     andi    $s1, $s1, 0xFFF0    # MODIFY RE0 a 3 = out(0)
     sw      $s1, TRISE($s0)     
 
+    
 loop:                           #while(1)                                        
-
     
     lw      $s2, LATE($s0)
     andi    $s2, $s2, 0xFFF0    #RE= 0
     or      $s2, $s2, $s3    
     sw      $s2, LATE($s0)      #RE = count
 
-    addi    $s3, $s3, -1        #count --
     andi    $s3, $s3, 0x000F    #count <16
+    xor     $t0, $s3, 0x0001    # bit0\
+    sll     $t0, $t0, 3  
 
-    li $a0, 250                 #4hz
-    jal delay                   #delay(250)
+    srl     $s3, $s3, 1         # count >> 1
+    or      $s3, $s3, $t0  
+
+    li $a0, 666                 #1.5hz
+    jal delay                   #delay(666)
 
 
     j       loop
