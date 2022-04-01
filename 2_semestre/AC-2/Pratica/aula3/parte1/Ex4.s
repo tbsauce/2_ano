@@ -11,26 +11,30 @@
     .globl main
 
 main:
-    lui     $t1, SFR_BASE_HI        # 0xBF88
-    lw      $t2, TRISE($t1)                 # READ  (Mem_addr = 0xBF880000 + 0x6100)
-    andi    $t2, $t2, 0xFFF0        # MODIFY (bit0-3 = 0 - RE0
-    sw      $t2, TRISE($t1)                 # WRITE (Write TRISE register)
 
-    lw      $t2, TRISB($t1)         # READ  (Mem_addr = 0xBF880000 + 0x6040)
-    ori     $t2, $t2, 0x000F        # MODIFY (bit0 = 0 - RB0
-    sw      $t2, TRISB($t1)                 # WRITE TRISB register
-loop:                                               #   while(1) {
-    lw      $t2, PORTB($t1)                 #           $t2 = PORTB
-    andi    $t2, $t2, 0x000F                #               $t2 = RB0
+    lui     $t1, SFR_BASE_HI    #Base
 
-    xori    $t2, $t2, 0x0009
+    lw      $t2, TRISE($t1)        
+    andi    $t2, $t2, 0xFFF0    # MODIFY RE0 a 3 = out(0)
+    sw      $t2, TRISE($t1)     
 
-    lw      $t3, LATE($t1)              #           $t3 = LATE
-    andi    $t3, $t3, 0xFFF0            #           RE0 = 0
-    or      $t3, $t3, $t2               #           RE0 = RB0
-    sw      $t3, LATE($t1)
-    j           loop
+    lw      $t2, TRISB($t1)    
+    ori     $t2, $t2, 0x000F    # MODIFY RB0 a 3 = in(1)
+    sw	    $t2, TRISB($t1)
 
-    li      $v0, 0                          #       return 0;
+loop:                           #while(1)                                        
+
+    lw      $t2, PORTB($t1)     
+    andi    $t2, $t2, 0x000F    #RB ler(PORT)
+    
+    lw      $t3, LATE($t1)
+    andi    $t3, $t3, 0xFFF0    #RE= 0
+    xori    $t2, $t2, 0x0009    #RE0 = RB0\, RE1 = RB1, RE2 = RB2 e RE3 = RB3\
+    or      $t3, $t2, $t3      
+    sw      $t3, LATE($t1)      #RE = RB
+
+    j       loop
+
+    
+    li      $v0, 0              #return 0;
     jr      $ra
-

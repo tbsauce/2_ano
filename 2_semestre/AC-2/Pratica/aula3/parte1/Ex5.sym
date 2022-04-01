@@ -1,0 +1,19 @@
+GAS LISTING Ex5.s 			page 1
+
+
+DEFINED SYMBOLS
+               Ex5.s:1      *ABS*:000000000000bf88 SFR_BASE_HIGH
+               Ex5.s:2      *ABS*:0000000000006100 TRISE
+               Ex5.s:3      *ABS*:0000000000006110 PORTE
+               Ex5.s:4      *ABS*:0000000000006120 LATE
+               Ex5.s:5      *ABS*:00000000000060c0 TRISD
+               Ex5.s:6      *ABS*:00000000000060d0 PORTD
+               Ex5.s:7      *ABS*:00000000000060e0 LATD
+               Ex5.s:8      *ABS*:000000000000000c resetCoreTimer
+               Ex5.s:9      *ABS*:000000000000000b readCoreTimer
+               Ex5.s:13     .text:0000000000000000 main
+               Ex5.s:31     .text:0000000000000030 while
+               Ex5.s:57     .text:0000000000000074 delay
+               Ex5.s:62     .text:0000000000000084 whiled
+
+NO UNDEFINED SYMBOLS

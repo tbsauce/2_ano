@@ -5,47 +5,68 @@
     .equ TRISE, 0x6100
     .equ PORTE, 0x6110
     .equ LATE, 0x6120
+    .equ TRISD, 0x60C0
+    .equ PORTD, 0x60D0
+    .equ LATD, 0x60E0
     .equ resetCoreTimer, 12
     .equ readCoreTimer, 11
-    .equ putChar, 3
-    .equ printInt, 6
-    .equ inkey, 1
+
     .data
     .text
     .globl main
+
 main:
-    addiu $sp, $sp, -12
-    sw $ra, 0($sp)
-    sw $s0, 4($sp)
-    sw $s1, 8($sp)
 
-    li $s0, 0   #v = 0
-
-    lui     $t1, SFR_BASE_HI        # 0xBF88
-    lw      $t2, TRISE($t1)                 # READ  (Mem_addr = 0xBF880000 + 0x6100)
-    andi    $t2, $t2, 0xFFFE        # MODIFY (bit0-3 = 0 - RE0
-    sw      $t2, TRISE($t1)                 # WRITE (Write TRISE register)
-
-loop:
+    addi    $sp, $sp, -20
+    sw      $ra, 0($sp)
+    sw      $s0, 4($sp)
+    sw      $s1, 8($sp)
+    sw      $s2, 12($sp)
+    sw      $s3, 16($sp)
     
-    lw      $t3, LATE($t1)              #           $t3 = LATE
-    andi    $t3, $t3, 0xFFFE            #           RE0 = 0
-    or      $t3, $t3, $s0              #            
-    sw      $t3, LATE($t1)
-    
-    li $a0, 500
-    jal delay                           #delay(500)
+    lui     $s0, SFR_BASE_HI    #Base
+    li      $s3, 0              #v = 0
 
-    xori $s0, $s0, 0x0001
+    lw      $s1, TRISE($s0)        
+    andi    $s1, $s1, 0xFFFE    # MODIFY RE0= out(0)
+    sw      $s1, TRISE($s0)     
+
+    lw      $s1, TRISD($s0)        
+    andi    $s1, $s1, 0xFFFE    # MODIFY RD0= out(0)
+    sw      $s1, TRISD($s0)     
+
+loop:                           #while(1)                                        
+
+    
+    lw      $s2, LATE($s0)
+    andi    $s2, $s2, 0xFFFE    #RE0= 0
+    or      $s2, $s2, $s3    
+    sw      $s2, LATE($s0)      #RE0 = v
+
+    lw      $s2, LATD($s0)
+    andi    $s2, $s2, 0xFFFE    #RD0= 0
+    or      $s2, $s2, $s3    
+    sw      $s2, LATD($s0)      #RD0 = v
+
+    #li $a0, 500                 #500ms
+    li $a0, 10
+    jal delay                   #delay(500)
+
+    xori    $s3, $s3, 0x0001    #v ^= 1;
 
     j       loop
 
-    sw $s1, 8($sp)
-    lw $s0, 4($sp)
-    lw $ra, 0($sp)
-    addiu $sp, $sp, 12
+    
+    lw      $ra, 0($sp)
+    lw      $s0, 4($sp)
+    lw      $s1, 8($sp)
+    lw      $s2, 12($sp)
+    lw      $s3, 16($sp)
+    addi    $sp, $sp, 20
 
-    jr $ra
+    
+    li      $v0, 0              #return 0;
+    jr      $ra
 
 ###########################
 delay:
