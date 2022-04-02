@@ -2,28 +2,27 @@
 
 void delay(int ms);
 
-int main(void){
-    //inicializar entrada a 0
-    LATE = LATE & 0xFFF0;
-    // Configure port RE0 a RE3 as output
+int main(void)
+{
+    //reset
+    LATE = (LATE & 0xFFF0);
+    // Configure port RC14 as output
     TRISE = (TRISE & 0xFFF0);
 
-    int count = 1;
-
+    int count = 0;
+    
     while(1){
-        // LATE = count
-        LATE = (LATE & 0xFFF0) | count;
-        // Wait 4 hz
-        delay(250);
-        
-        count = (count + 1 ) & 0x000F;
-        //count = (count + 1 ) % 16;
-    }
-    return 0;
+        LATE = count;
+        // Wait 0.5s
+        delay(500);
+        // counter
+        count = (count + 1) & 0x000F;
+    } 
+return 0;
 }
 
 //Funcao delay
 void delay(int ms){
     resetCoreTimer();
-    while(readCoreTimer()<20000);
+    while(readCoreTimer()<20000 * ms);
 }
