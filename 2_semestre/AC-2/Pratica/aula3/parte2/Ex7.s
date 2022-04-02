@@ -32,7 +32,7 @@ main:
     sw      $s1, TRISE($s0)
 
     lw      $s1, TRISB($s0)        
-    ori     $s1, $s1, 0x0004    # MODIFY RB2 = out(0)
+    ori     $s1, $s1, 0x0004    # MODIFY RB2 = in(0)
     sw      $s1, TRISB($s0)     
 
     

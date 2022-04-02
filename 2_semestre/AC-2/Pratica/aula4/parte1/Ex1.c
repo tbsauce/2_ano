@@ -4,6 +4,7 @@ void delay(int ms);
 
 int main(void)
 {
+    //reset
     LATCbits.LATC14 = 0;
     // Configure port RC14 as output
     TRISCbits.TRISC14 = 0;

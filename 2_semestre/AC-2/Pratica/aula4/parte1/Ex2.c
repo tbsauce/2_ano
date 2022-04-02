@@ -6,7 +6,7 @@ int main(void)
 {
     //reset
     LATE = (LATE & 0xFFF0);
-    // Configure port RC14 as output
+    // Configure ports
     TRISE = (TRISE & 0xFFF0);
 
     int count = 0;

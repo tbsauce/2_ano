@@ -2,31 +2,37 @@
 
 void delay(int ms);
 
-int main(void) {
+int main(void){
     unsigned char segment;
-    LATB = LATB & 0x80FF;        
-    LATD = (LATD & 0xFF9F) | 0x0020;    // RD= 1 e RD6 = 0       
-    TRISB = TRISB & 0x80FF;             // configure RB8-RB14 as outputs
-    TRISD = TRISD & 0xFF9F;             // configure RD5-RD6 as outputs
 
-    int i ;
+    //reset
+    LATD = (LATD & 0xFF9F);
+    LATB = (LATB & 0x80FF);
+    // Configure ports
+    TRISB = (TRISB & 0x80FF);
+    TRISD = (TRISD & 0xFF9F);
+
+    //configure dysplay
+    LATD = (LATD | 0x0020);
+
     while(1){
-        segment = 1;  
+        segment = 1;
+        int i;
         for(i=0; i < 7; i++){
-            // send "segment" value to display
-            LATB = (LATB & 0x80FF) | segment << 8; 
-            // wait 0.5 second
-            delay(500);
-            segment = segment << 1;
-        }
-        //toggle display selection
-        LATD = LATD ^  0x0060;
+        // send "segment" value to display
+        LATB = (LATB & 0x80FF ) | segment <<8;
+        // wait 0.5 second
+        delay(500);
+        segment = segment << 1;
     }
-    return 0; 
+    // toggle display selection
+    LATD = LATD ^ 0x0060;
+    }
+    return 0;
 }
 
-
-void delay(int ms) {
+//Funcao delay
+void delay(int ms){
     resetCoreTimer();
-    while(readCoreTimer() < 20000 * ms);
+    while(readCoreTimer()<20000 * ms);
 }
