@@ -1,0 +1,6 @@
+javac file-d (path for .class)
+java -cp (path.imports) file
+
+Exemplo:
+javac aula4/Ex4.java -d ../bin
+java -cp ../bin aula4/Ex4
