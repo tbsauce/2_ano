@@ -21,7 +21,7 @@ public class Help {
                 System.out.print("Input Inválido.\n");
                 sc.nextLine();
             }
-        }
+        }   
         return i;
     }
 
