@@ -159,7 +159,8 @@ public class Help {
     //Read string
     public static String getString (String text){
         System.out.print(text);
-        return sc.nextLine();
+        text = sc.nextLine();
+        return text;
     }
 
     //Read string with min characters
