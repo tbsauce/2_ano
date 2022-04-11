@@ -8,7 +8,7 @@ public class Ex3 {
 
         //create balls
         for (int i = 0; i < balls.length; i++) {
-            balls[i] = new Circle(Help.randomint(1, 5), Help.randomint(1, 5), Help.randomint(1, 5));
+            balls[i] = new Circle(Help.randomint(1, 10), Help.randomint(1, 10), Help.randomint(1, 10));
         }
 
         for (int i = 0; i < balls.length; i++) {
@@ -29,8 +29,10 @@ public class Ex3 {
         Triangle doritos [] = new Triangle[20];
 
         //create Doritos
-        for (int i = 0; i < balls.length; i++) {
-            doritos[i] = new Triangle(Help.randomint(1, 5), Help.randomint(1, 5), Help.randomint(1, 5));;
+        for (int i = 0; i < doritos.length; i++) {
+            do{
+                doritos[i] = new Triangle(Help.randomint(1, 10), Help.randomint(1, 10), Help.randomint(1, 10));
+            }while(doritos[i].getlado1() == doritos[i].getlado2() || doritos[i].getlado2() == doritos[i].getlado3() || doritos[i].getlado1() == doritos[i].getlado3());
         }
 
         for (int i = 0; i < doritos.length; i++) {
@@ -51,7 +53,7 @@ public class Ex3 {
 
         //create casa
         for (int i = 0; i < balls.length; i++) {
-            casa[i] = new Retangle(Help.randomint(1, 5), Help.randomint(1, 5));;
+            casa[i] = new Retangle(Help.randomint(1, 10), Help.randomint(1, 10));;
         }
 
         for (int i = 0; i < casa.length; i++) {
