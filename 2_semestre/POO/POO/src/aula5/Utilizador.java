@@ -6,13 +6,13 @@ public class Utilizador {
     private String nome;
     private int nMec;
     private String curso;
-    private int borroewd;
+    private int borrowed;
     
     Utilizador(String nome , int nMec, String curso){
         this.nome = nome;
         this.nMec = nMec;
         this.curso = curso;
-        this.borroewd = 0;
+        this.borrowed = 0;
     }
 
     public void setnMec(int nMec){
@@ -23,18 +23,26 @@ public class Utilizador {
         return this.nMec;
     }
 
+    public String getnome(){
+        return this.nome;
+    }
+
+    public String getcurso(){
+        return this.curso;
+    }
+
+    //Borrows a book counting how many the user has goten
     public Boolean borrowing(){
-        if(borroewd == 3)
+        if(borrowed == 3)
             return true;
-        borroewd++;
+        borrowed++;
         return false;
     }
 
+    //gives back a book decresing the number of books borrowed
     public void giveback(){
-        borroewd--;
+        borrowed--;
     }
-
-
 
     public String toString(){
         return String.format("Aluno: %d; %s; %s", nMec, nome, curso);

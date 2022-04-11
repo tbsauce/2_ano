@@ -5,7 +5,6 @@ public class Livro {
     private int id;
     private String titulo;
     private String tipoEmprestimo;
-
     private static int count = 100;
 
     Livro(String titulo){

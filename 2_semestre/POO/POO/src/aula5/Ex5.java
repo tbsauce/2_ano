@@ -20,16 +20,14 @@ public class Ex5 {
             "7 - devolver\n"+
             "8 - sair\n");
             //chooses operation
-            op = Help.getint("Choose Operation: ");
+            op = Help.getint("Choose Operation: ", 1, 8);
 
         
             if(op == 1){
-                System.out.print("Aluno:");
-                String nome = sc.nextLine();
+                String nome = Help.getString("Aluno: ");
                 int nMec =  Help.getint("nMec:", 0);
-                //creates a acronimo
-                System.out.print("Curso: ");
-                String curso = sc.nextLine();
+                //creates a acronimo 
+                String curso = Help.getString("Curso: ");
                 if(Help.countspaces(curso)>0)
                     curso = Help.acronimo(curso);
 
@@ -68,15 +66,17 @@ public class Ex5 {
             }
             if(op == 4){
                 //new book
-                String book = sc.nextLine();
+                String book = Help.getString("Titulo: ");
                 for (int i = 0; i < livros.length; i++){
                     if(livros[i]==null){
                         livros[i] = new Livro(book);
                         break;
                     }
                     //cant put existeing books
-                    if(book.equals(livros[i].getTitulo() ) )
+                    if(book.equals(livros[i].getTitulo())){
+                        System.out.print("This was already registered.");
                         break;
+                    }
                 }
             }
             if(op == 5)
@@ -112,7 +112,7 @@ public class Ex5 {
                         if(livros[i]==null){
                             break;
                         }
-                        //checks if its alreafy borroewd and borrows if not
+                        //checks if its alread y borroewd and borrows if not
                         if( tmpid == livros[i].getId()){
                             if(livros[i].getTipoEmprestimo() != "CONDICIONAL"){
                                 if(!alunos[aluno_tmp].borrowing())
@@ -125,8 +125,14 @@ public class Ex5 {
                         }
                     }
                 }
-                else
-                    System.out.print("Input Invalid\n");
+                else{
+                    if(!existaluno && existbook)
+                        System.out.print("student not valid");
+                    else if(!existbook && existaluno)
+                        System.out.print("Book not valid\n");
+                    else
+                        System.out.print("Both inputs invalid\n");
+                }
         
             }
             if(op == 7){
@@ -160,8 +166,14 @@ public class Ex5 {
                         }
                     }
                 }
-                else
-                    System.out.print("Input Invalid\n");
+                else{
+                    if(!existaluno && existbook)
+                        System.out.print("student not valid");
+                    else if(!existbook && existaluno)
+                        System.out.print("Book not valid\n");
+                    else
+                        System.out.print("Both inputs invalid\n");
+                }
         
             }
             if(op == 8){         

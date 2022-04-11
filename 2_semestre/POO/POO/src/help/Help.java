@@ -15,6 +15,7 @@ public class Help {
             try{
                 System.out.print(text);
                 i = sc.nextInt();
+                sc.nextLine();
                 break;
             }
             catch(InputMismatchException e){
@@ -32,6 +33,7 @@ public class Help {
             try{
                 System.out.print(text);
                 i = sc.nextInt();
+                sc.nextLine();
                 if(i<min ||i> max)
                     throw new InputMismatchException();
                 break;
@@ -51,6 +53,7 @@ public class Help {
             try{
                 System.out.print(text);
                 i = sc.nextInt();
+                sc.nextLine();
                 if(i<min)
                     throw new InputMismatchException();
                 break;
@@ -70,6 +73,7 @@ public class Help {
             try{
                 System.out.print(text);
                 i = sc.nextInt();
+                sc.nextLine();
                 if(i> max)
                     throw new InputMismatchException();
                 break;
@@ -89,6 +93,7 @@ public class Help {
             try{
                 System.out.print(text);
                 i = sc.nextDouble();
+                sc.nextLine();
                 break;
             }
             catch(InputMismatchException e){
@@ -106,6 +111,7 @@ public class Help {
             try{
                 System.out.print(text);
                 i = sc.nextDouble();
+                sc.nextLine();
                 if(i<min ||i> max)
                     throw new InputMismatchException();
                 break;
@@ -125,6 +131,7 @@ public class Help {
             try{
                 System.out.print(text);
                 i = sc.nextDouble();
+                sc.nextLine();
                 if(i<min)
                     throw new InputMismatchException();
                 break;
@@ -144,6 +151,7 @@ public class Help {
             try{
                 System.out.print(text);
                 i = sc.nextDouble();
+                sc.nextLine();
                 if(i> max)
                     throw new InputMismatchException();
                 break;
