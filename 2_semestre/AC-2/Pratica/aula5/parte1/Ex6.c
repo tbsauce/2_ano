@@ -19,8 +19,8 @@ int main(void){
         do{
             send2displays(counter);
             // wait 1 ms
-            delay(1);
-        } while(++i < 200);  //wait 5Hz
+            delay(10);
+        } while(++i < 50);  //wait 5Hz
         // increment counter (mod 256)
         counter = (counter + 1 ) & 0x00FF;
     }

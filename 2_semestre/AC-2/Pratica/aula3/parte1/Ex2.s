@@ -29,7 +29,7 @@ loop:                           #while(1)
 
     lw      $t3, LATE($t1)
     andi    $t3, $t3, 0xFFFE    #RE0= 0
-    xor      $t3, $t2, $t3      
+    xor     $t3, $t2, $t3      
     sw      $t3, LATE($t1)      #RE0 = RB0
 
     j       loop

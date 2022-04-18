@@ -1,17 +1,14 @@
-#include <detpic32.h>
+    #include <detpic32.h>
 
 void delay(int ms);
 void send2displays(unsigned char value);
 
 int main(void){
     // declare variables
-    int counter, i;
-    //reset
-    LATB = (LATB & 0x80FF);
-    LATD = (LATD & 0xFF9F);
-    // Configure ports
-    TRISB = (TRISB & 0x80FF);   //out
-    TRISD = (TRISD & 0xFF9F);   //out
+    int i, counter;
+    // initialize ports
+    TRISD = TRISD & 0xFF9F;
+    TRISB = TRISB & 0x80FF;
 
     counter = 0;
     while(1){
@@ -20,9 +17,9 @@ int main(void){
             send2displays(counter);
             // wait 20 ms
             delay(20);
-        } while(++i < 10);  //wait 5Hz = 10 * 20 = 200 ms
+        } while(++i < 10);      //wait 5Hz = 10 * 20 = 200 ms
         // increment counter (mod 256)
-        counter = (counter + 1 ) & 0x00FF;
+        counter =( counter + 1 ) & 0x00FF;
     }
     return 0;
 }

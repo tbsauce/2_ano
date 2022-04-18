@@ -1,3 +1,4 @@
+
 #include <detpic32.h>
 
 void delay(int ms);
@@ -12,23 +13,29 @@ int main(void){
     LATD = (LATD & 0xFF9F);
     LATE = (LATE & 0xFF00);
     // Configure ports
+    TRISB = (TRISB | 0x000F);   //in
     TRISB = (TRISB & 0x80FF);   //out
     TRISD = (TRISD & 0xFF9F);   //out
-    TRISE = (TRISE & 0xFF00);
+    TRISE = (TRISE & 0xFF00);   //out
 
     counter = 0;
     while(1){
         i = 0;
         do{
             send2displays(toBcd(counter));
-	    LATE = (LATE & 0xFF00) | toBcd(counter);
+	        LATE = (LATE & 0xFF00) | toBcd(counter);
             // wait 1 ms
             delay(10);
-        } while(++i < 50);  //wait 2Hz
+        } while(++i < 50);  
         // increment counter (mod 60)
-	    if(++counter == 60)
+        if((PORTB & 0x0001) == 0x0001 )
+            counter++;
+        else
+            counter--;
+        if(counter > 60)
             counter = 0;
-
+        if(counter < 0)
+            counter = 60;
     }
     return 0;
 }
