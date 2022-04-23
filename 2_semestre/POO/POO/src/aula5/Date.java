@@ -1,5 +1,7 @@
 package aula5;
 
+import java.time.LocalDate;
+
 public class Date {
 
     private int day;
@@ -8,7 +10,7 @@ public class Date {
 
 
     //constructur
-    Date(int day, int month, int year){
+    public Date(int day, int month, int year){
         this.set(day, month, year);
     }
 
@@ -115,6 +117,14 @@ public class Date {
         if(day < 1 || !validMonth(month) || year < 0 || monthDays(month, year) < day)
             return false;
         return true;
+    }
+
+    public static Date today(){
+        LocalDate today = LocalDate.now();
+        int day = today.getDayOfMonth();
+        int mes = today.getMonthValue();
+        int ano = today.getYear();
+        return new Date(day, mes, ano);
     }
 }
 
