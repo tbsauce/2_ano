@@ -60,8 +60,8 @@ while:  bne     $0, $0, endw                 #     while(true) {
         move    $a0, $t1                     #
         li 	$a1, 5                       #	
         sll 	$a1, $a1, 16                 #         printInt(value, 10 | 5 << 16)
-        ori	$a1, $a1, 10		     #
-        li      $v0, printInt                #
+        ori	$a1, $a1, 10		     #                  10 -> decimal
+        li      $v0, printInt                #                   5 -> caracteres visiveis
         syscall
         
        

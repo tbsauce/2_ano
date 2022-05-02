@@ -31,7 +31,7 @@ ifd:
     j ifs           
 elseifd:1
     bne $v0, 'n', ifs
-    li $t1, 1000             #10hz
+    li $t1, 100             #10hz
 
 #stop com teclado
 ifs:

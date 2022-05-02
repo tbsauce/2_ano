@@ -11,7 +11,7 @@ do:
 	syscall
 	
 if:
-	beq $v0, 0, else
+	beq $v0, 0, else	#if(inkey != 0)
 	
 	move $a0, $v0
 	li $v0, put_char

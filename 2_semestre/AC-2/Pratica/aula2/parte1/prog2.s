@@ -12,44 +12,43 @@ main:
     addiu $sp , $sp, -8
     sw $ra, 0($sp)
     sw $s0, 4($sp)
-    
-    li $s0, 0
+
+    li $s0, 0	                #counter = 0
+
 while:
 
-    li $a0, 1
+    li $a0, 100                 #1hz  = 100ms * 200000
     jal delay
-    
-    addi $s0, $s0, 1
-    move $a0, $s0
 
-    ori $a1, $0, 5
-    sll $a1, 16
-    ori $a1, $a1, 10
-    li $v0, printInt
-    syscall
-
-    li $a0, '\r'
-    li $v0, putChar
-    syscall
+    addi $s0, $s0, 1		    #counter++
+	move $a0, $s0
+	
+	li $a1, 4
+	sll $a1, $a1, 16
+	ori $a1, $a1, 10		    #10 | 4 << 16
+	
+	li $v0, printInt
+	syscall			            #printInt(counter++, 10 | 4 << 16)
+	
+	li $a0, '\r'
+	li $v0, putChar
+	syscall			            #putChar('\r')
 
     j while
-endw:
+
     lw $ra, 0($sp)
     lw $s0, 4($sp)
-    addiu $sp , $sp, 4
-    
-    li $v0, 0
-    jr $ra
+    addiu $sp , $sp, 8    
     
 delay:
     li $v0, resetCoreTimer
     syscall
-while2:
-    li $v0, readCoreTimer
-    syscall
 
-    li $t0, 200000	# k = 200000
-    mul $t0, $a0, $t0	#k *ms
-    blt $v0, $t0, while2	#100hz
+read:
+    li $v0, readCoreTimer  
+    syscall                     #readCoreTimer()
+
+    mul $t0, $a0, 20000         #k * ms  
+    blt $v0, $t0, read          #while(readCoreTimer() < K * ms)
+
     jr $ra
-    

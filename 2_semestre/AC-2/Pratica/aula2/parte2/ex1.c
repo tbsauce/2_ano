@@ -6,25 +6,31 @@ int main(void){
     int cnt10 = 0;
 
     while(1){
-        delay(100);
+        delay(100);      //10HZ
 
         putChar('\r');
-        printInt(++cnt10,0x0005000A);
+        cnt10++;
         
-        if(cnt10%2==0){
+        if(cnt10 % 2 == 0){
             cnt5++;
         }
-        if(cnt10%10==0){
+            
+
+        if(cnt10 % 10 == 0){
             cnt1++;
         }
+
+        printInt(cnt10, 10 | 5 << 16);
         putChar(' ');
-        printInt(cnt5, 0x0005000A);
+        printInt(cnt5, 10 | 5 << 16);
         putChar(' ');
-        printInt(cnt1, 0x0005000A);
+        printInt(cnt1, 10 | 5 << 16);
+        putChar(' ');
+
     }
     return 0;
 }
 void delay(int ms){
     resetCoreTimer();
-    while(readCoreTimer()<20000);
+    while (readCoreTimer() < 20000 * ms);
 }

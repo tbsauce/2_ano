@@ -52,8 +52,6 @@ freq1:
     bne $t0, $0, endf
     addi $s2, $s2, 1		#cnt1 
 
-
-
 endf:
 
     ori $a1, $0, 5

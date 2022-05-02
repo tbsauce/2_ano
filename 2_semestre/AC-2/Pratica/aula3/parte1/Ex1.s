@@ -14,7 +14,7 @@ main:
 
     lui     $t1, SFR_BASE_HI    #Base
 
-    lw      $t2, TRISE($t1)        
+    lw      $t2, TRISE($t1)  
     andi    $t2, $t2, 0xFFFE    # MODIFY RE0 = out(0)
     sw      $t2, TRISE($t1)     
 

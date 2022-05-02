@@ -1,11 +1,11 @@
 	.data
 	.equ p_char, 3
-	.equ r_char, 2
+	.equ g_char, 2
 	.text
 	.globl main
 main:
 do:
-	li $v0, r_char
+	li $v0, g_char
 	syscall
 	
 	move $a0, $v0

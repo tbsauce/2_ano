@@ -25,7 +25,7 @@ main:
     sw      $s3, 16($sp)
     
     lui     $s0, SFR_BASE_HI    #Base
-    li      $s3, 0              #v = 0
+    li      $s3, 0x0000              #v = 0
 
     lw      $s1, TRISE($s0)        
     andi    $s1, $s1, 0xFFFE    # MODIFY RE0= out(0)
@@ -37,7 +37,6 @@ main:
 
 loop:                           #while(1)                                        
 
-    
     lw      $s2, LATE($s0)
     andi    $s2, $s2, 0xFFFE    #RE0= 0
     or      $s2, $s2, $s3    
@@ -48,8 +47,8 @@ loop:                           #while(1)
     or      $s2, $s2, $s3    
     sw      $s2, LATD($s0)      #RD0 = v
 
-    #li $a0, 500                 #500ms
-    li $a0, 10
+    li $a0, 500                 #500ms
+    #li $a0, 10                 #10ms
     jal delay                   #delay(500)
 
     xori    $s3, $s3, 0x0001    #v ^= 1;

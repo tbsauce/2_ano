@@ -32,7 +32,7 @@ int main(void) {
         }
         media = media/ns;
         V=(media*33+511)/1023;
-        printf("Volts : %f", V);
+        printf("Volts : %.1f", V/10);
         IFS1bits.AD1IF = 0; // Reset AD1IF         
     }
     return 0;
