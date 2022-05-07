@@ -8,8 +8,13 @@ public class Conjunto {
     Conjunto(){
         vector = new int[0];
     }
-
-    void insert(int num){
+    Conjunto(Conjunto aux){
+        vector = new int[aux.size()];
+        for (int i = 0; i < aux.size(); i++) {
+            this.vector[i] = aux.vector[i];
+        }
+    }
+    public void insert(int num){
         if(!contains(num)){
             int [] aux = this.vector;
             int size = 1 + this.size();
@@ -22,7 +27,7 @@ public class Conjunto {
     }
 
 
-    boolean contains(int num){
+    public boolean contains(int num){
         for (int i = 0; i < this.size(); i++) {
             if(num == this.getpos(i))
                 return true;
@@ -30,7 +35,7 @@ public class Conjunto {
         return false;
     }
 
-    void remove(int num){
+    public void remove(int num){
         boolean sub = false;
         if(contains(num)){
             int [] aux = this.vector;
@@ -49,7 +54,7 @@ public class Conjunto {
         }
     }
 
-    void empty(){
+    public void empty(){
         this.vector = new int[0];
     }
 
@@ -62,27 +67,28 @@ public class Conjunto {
         return text;
     }
 
-    int size(){
+    public int size(){
         return (this.vector).length;
     }
 
-    Conjunto combine(Conjunto add){
-        Conjunto aux = this;
+    public Conjunto combine(Conjunto add){
+        Conjunto aux = new Conjunto(this);
         for (int i = 0; i < add.size(); i++) {
             aux.insert(add.getpos(i));
         }
+
         return aux;
     }
 
-    Conjunto subtract(Conjunto dif){
-        Conjunto aux = this;
+    public Conjunto subtract(Conjunto dif){
+        Conjunto aux = new Conjunto(this);
         for (int i = 0; i < dif.size(); i++) {
             aux.remove(dif.getpos(i));
         }
         return aux;
     }
 
-    Conjunto intersect(Conjunto inter){
+    public Conjunto intersect(Conjunto inter){
         Conjunto aux = new Conjunto();
         for (int i = 0; i < inter.size(); i++) {
             if (contains(inter.getpos(i))) {

@@ -25,12 +25,12 @@ int main(void){
         LATDbits.LATD11 = 1; 
         // Wait while conversion not done (AD1IF == 0)
         while(IFS1bits.AD1IF == 0);
-            // Reset LATD11 (LATD11=0)
-            LATDbits.LATD11 = 0;
-            // Read conversion result (ADC1BUF0) to "aux" variable
-            aux = ADC1BUF0;
-            // Reset AD1IF (should be done after reading the conversion result)
-            IFS1bits.AD1IF = 0; // Reset AD1IF  
+        // Reset LATD11 (LATD11=0)
+        LATDbits.LATD11 = 0;
+        // Read conversion result (ADC1BUF0) to "aux" variable
+        aux = ADC1BUF0;
+        // Reset AD1IF (should be done after reading the conversion result)
+        IFS1bits.AD1IF = 0; // Reset AD1IF  
         
     }
     return 0;
