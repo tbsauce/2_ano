@@ -30,7 +30,7 @@ public abstract class Viatura implements KmPercorridosInterface{
     public int getPower(){return this.power;}
 
     public void setMatricula(String matricula){
-    assert validMatricula() : "Matricula must be AA-00-AA";
+    assert validMatricula(matricula) : "Matricula must be AA-00-AA";
         this.matricula = matricula;
     }
 
@@ -49,20 +49,20 @@ public abstract class Viatura implements KmPercorridosInterface{
 
     //Trajeto
     public void trajeto(int quilometros){
-        ultimoTrajeto = trajeto;
+    assert quilometros > 0 : "km must be positive";
         trajeto = quilometros;
         distanciaTotal += trajeto;
     }
 
     public int ultimoTrajeto(){
-        return ultimoTrajeto;
+        return trajeto;
     }
 
     public int distanciaTotal(){
         return distanciaTotal;
     }
 
-    public boolean validMatricula(){
+    public boolean validMatricula(String matricula){
         if(matricula.length() == 8){
             if(Character.isLetter(matricula.charAt(0)) && Character.isLetter(matricula.charAt(1)) &&
                Character.isDigit(matricula.charAt(3))  && Character.isDigit(matricula.charAt(4))  &&

@@ -28,7 +28,7 @@ public class Empresa {
     }
 
     public void setCodigo_Postal(String codigo_postal){
-    assert validCodigo_Postal() : "Codigo Postal must be 0000-000";
+    assert validCodigo_Postal(codigo_postal) : "Codigo Postal must be 0000-000";
         this.codigo_postal = codigo_postal;
     }
 
@@ -36,7 +36,7 @@ public class Empresa {
         this.email = email;
     }
 
-    public boolean validCodigo_Postal(){
+    public boolean validCodigo_Postal(String codigo_postal){
         if(codigo_postal.length() == 8){
             if(Character.isDigit(codigo_postal.charAt(0)) && Character.isDigit(codigo_postal.charAt(1)) &&
                Character.isDigit(codigo_postal.charAt(2)) && Character.isDigit(codigo_postal.charAt(3)) &&
@@ -63,7 +63,7 @@ public class Empresa {
     }
 
     public Viatura get(int index){
-    assert index > 0 && index < size: "it must be less than size";
+    assert index >= 0 && index < size: "it must be less than size";
         return stock[index];
     }
 
@@ -94,5 +94,20 @@ public class Empresa {
         return name.hashCode() * codigo_postal.hashCode() * email.hashCode();
     }
 
+    public void orderPower(){
+        boolean done = false;
+        while(!done){
+            done = true;
+            Viatura tmp;
+            for (int i = 0; i < size()-1; i++) {
+                if(stock[i].getPower() < stock[i+1].getPower()){
+                    tmp = stock[i];
+                    stock[i] = stock[i+1];
+                    stock[i+1] = tmp;
+                    done = false;
+                }
+            }
+        }
+    }
 }
    
