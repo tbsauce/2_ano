@@ -33,4 +33,9 @@ public class PratoDieta extends Prato {
         }
         return false;
     }
+
+    @Override
+    public String toString(){
+        return super.toString() + String.format("- Dieta (%.02f Caloiros)", getCal());
+    }
 }

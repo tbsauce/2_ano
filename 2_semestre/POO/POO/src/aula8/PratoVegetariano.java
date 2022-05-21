@@ -15,5 +15,10 @@ public class PratoVegetariano extends Prato{
         }
         return false;
     }
+
+    @Override
+    public String toString(){
+        return super.toString() + String.format("- Prato Vegetariano");
+    }
     
 }

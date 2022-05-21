@@ -11,6 +11,7 @@ public class Prato {
         this.size =0;
     }
 
+    public int size(){return this.size;}
     public void setName(String name){
         this.name = name;
     }
@@ -20,6 +21,38 @@ public class Prato {
     public boolean addIngrediente(Alimento aux){
         composicao[size++] = aux;
         return true;
+    }
+
+    public double getPesoTotal(){
+        double total=0;
+        for (int i = 0; i < composicao.length; i++) {
+            total += composicao[i].getpeso(); 
+        }
+        return total;
+    }
+
+    public double getProteinasTotal(){
+        double total=0;
+        for (int i = 0; i < composicao.length; i++) {
+            total += composicao[i].getproteinas(); 
+        }
+        return total;
+    }
+
+    public double getCaloriasTotal(){
+        double total=0;
+        for (int i = 0; i < composicao.length; i++) {
+            total += composicao[i].getcalorias(); 
+        }
+        return total;
+    }
+
+    public String getAlimentos(){
+        String text="";
+        for (int i = 0; i < size(); i++) {
+            text += composicao[i] + "->";
+        }
+        return text;
     }
 
     @Override

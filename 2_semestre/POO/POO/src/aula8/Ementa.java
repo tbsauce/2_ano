@@ -25,7 +25,19 @@ public class Ementa {
 
     public String getLocal(){return this.local;}
 
+    
     public void addPrato(Prato aux){
         pratos[size++] = aux;
+    }
+
+    public int size(){return this.size;}
+
+    @Override
+    public String toString(){
+        String text = "";
+        for (int j = 0; j < size(); j++) {
+            text  += pratos[j] + "\n";
+        }
+        return text;
     }
 }

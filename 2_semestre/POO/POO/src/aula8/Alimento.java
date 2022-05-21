@@ -32,7 +32,7 @@ public abstract class Alimento {
 
     @Override
     public String toString(){
-        return String.format("Proteinas %f, calorias %f, Peso %f", proteinas, calorias, peso);
+        return String.format("Proteinas %.02f, calorias %.02f, Peso %.02f", proteinas, calorias, peso);
     }
 
 }

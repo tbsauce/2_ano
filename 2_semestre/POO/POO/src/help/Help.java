@@ -258,6 +258,12 @@ public class Help {
             return dias[mes -1];
     }
 
+    //getsemanaString
+    public static String diasString(int dias){
+        String [] Semanatring = {"Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"};
+        return Semanatring[dias-1];
+    }
+
     //getmesstring
     public static String mestoString(int mes){
         String [] mesesstring = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};

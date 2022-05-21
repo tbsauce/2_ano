@@ -4,7 +4,7 @@ public class Ex2 {
 
 	public static void main(String[] args) {
 		Ementa ementa = new Ementa("Especial Primavera", "Snack da UA");
-		Prato[] pratos = new Prato[5];
+		Prato[] pratos = new Prato[7];
 		for (int i = 0; i < pratos.length; i++) {
 			pratos[i] = randPrato(i + 1);
 			System.out.println("A sair .. " + pratos[i]);
@@ -24,6 +24,9 @@ public class Ex2 {
 		}
 		System.out.println("\nEmenta final\n--------------------");
 		System.out.println(ementa);
+
+
+		System.out.println(pratos[2].getAlimentos());
 	}
 
 	public static Alimento randAlimento() {
