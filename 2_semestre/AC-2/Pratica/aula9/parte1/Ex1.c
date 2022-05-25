@@ -4,6 +4,7 @@ void configureAll();
 void send2displays(unsigned char value);
 unsigned char toBcd(unsigned char value);
 
+
 volatile int voltage = 0;       // Global variable
 static int num = 8;
 
