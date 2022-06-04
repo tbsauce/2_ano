@@ -1,27 +1,27 @@
 #include <detpic32.h>
 
+void send2displays(unsigned char value);
+unsigned char toBcd(unsigned char value);
 void delay(int ms);
-int voltageConversion(int VAL_AD);
-void send2displays(char value);
-int toBcd(int value);
 
-volatile unsigned char voltage = 0; // Global variable
+volatile unsigned char voltage = 0;     // Global variable
+int smp = 8;                            //number of samples
 
-int main(void)
-{
-    unsigned cnt = 0;
+int main(void){
+    unsigned int cnt = 0;
 
+    // Configure all (digital I/O, analog input, A/D module, interrupts)
     TRISBbits.TRISB4 = 1;       // RB4 digital output disconnected
     AD1PCFGbits.PCFG4 = 0;      // RB4 configured as analog input (AN4)
     AD1CON1bits.SSRC = 7;       // Conversion trigger constant
     AD1CON1bits.CLRASAM = 1;    // Stop conversion when the 1st A/D converter intetupr is generated.
                                 // At the same time, hardware clears ASAM bit
     AD1CON3bits.SAMC = 16;      // Sample time is 16 TAD (TAD = 100ns)
-    AD1CON2bits.SMPI = 7;       // Interrupt is generated after 8 sample
+    AD1CON2bits.SMPI = smp-1;       // Interrupt is generated after xx sample
     AD1CHSbits.CH0SA = 4;       // analog channel input 4
     AD1CON1bits.ON = 1;         // Enable the A/d configuration sequence
 
-    // Enable interrupts ADC
+    // Configure interrupt system
     IPC6bits.AD1IP = 2;         // configure priority of A/D interrupts
     IFS1bits.AD1IF = 0;         // clear A/D interrupt flag
     IEC1bits.AD1IE = 1;         // enable A/D interrupts
@@ -30,142 +30,79 @@ int main(void)
     TRISB = TRISB & 0x80FF;         // RB14 to RB8 as output
     TRISD = TRISD & 0xFF9F;         // Displays high/low as output
 
-    EnableInterrupts();
+    EnableInterrupts();             // Global Interrupt Enable
+    
+    // Start A/D conversion
+    AD1CON1bits.ASAM = 1; 
+    
+    while(1)
+    {
+        if(cnt == 0)                    // 0, 200 ms, 400 ms, ... (5 samples/second)
+        {
+            // Start A/D conversion
+            AD1CON1bits.ASAM = 1; 
+        }
 
-    AD1CON1bits.ASAM = 1;       // Start conversion
-
-    while (1) 
-    { 
-        if (cnt % 25 == 0)      // 250ms (4 samples/second)
-            AD1CON1bits.ASAM = 1;       // Start conversion
-
+        // Send "voltage" value to displays
         send2displays(voltage);
-
-        cnt++;
-        delay(10);               // wait 10ms -> freq = 100Hz
+        
+        cnt = (cnt + 1) % 20;
+        // Wait 10 ms
+        delay(10);
     }
-       
+
     return 0;
 }
 
-//Interrupt handler
-void _int_(27) isr_adc(void)
-{
+void _int_(27) isr_adc(void){
+
+    // Calculate buffer average (8 samples)
     int *p = (int *) &ADC1BUF0;
-    int i, average = 0;
-
-    for (i = 0; i < 8; i++)
+    int average = 0;
+    int i;
+    for ( i = 0; i < smp; i++){
         average += p[i * 4];
-
-    voltage = toBcd(voltageConversion(average / 8));
+    }
     
+    average = average / smp;
+    // Calculate voltage amplitude
+    voltage = (average * 33 + 511) / 1023;
+    // Convert voltage amplitude to decimal and store the result in the global variable "voltage"
+    voltage = toBcd(voltage);
+    // Reset AD1IF flag
     IFS1bits.AD1IF = 0;
 }
 
-void send2displays(char value)
-{
-    static const char display7Scodes[] = {
-                                        0x3F, //0
-                                        0x06, //1
-                                        0x5B, //2
-                                        0x4F, //3
-                                        0x66, //4
-                                        0x6D, //5
-                                        0x7D, //6
-                                        0x07, //7
-                                        0x7F, //8
-                                        0x6F, //9
-                                        0x77, //A
-                                        0x7C, //b
-                                        0x39, //C
-                                        0x5E, //d
-                                        0x79, //E
-                                        0x71  //F
-                                        };
-
-    static int displayFlag = 0;
-
-    unsigned char dh = value >> 4;      // Get the index of the decimal part
-    unsigned char dl = value & 0x0F;    // Get the index of the unitary part
-    
-    // Get the correct hex code for the number
-    dh = display7Scodes[dh];
-    dl = display7Scodes[dl];
-    
-    if (displayFlag == 0)
-    {
-        LATD = (LATD | 0x0040) & 0xFFDF;    // Dipslay High active and Display Low OFF
-        LATB = (LATB & 0x80FF) | ((unsigned int)(dh)) << 8; // Clean the display and set the right value
-    } else {
-        LATD = (LATD | 0x0020) & 0xFFBF;    // Display High OFF and Display High active
-        LATB = (LATB & 0x80FF) | ((unsigned int)(dl)) << 8; // Clean the display and set the right value
+//funcao send2displays
+void send2displays(unsigned char value){
+    static const char display7Scodes[] = {0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F, 0x77, 0x7C, 0x39, 0x5E, 0x79, 0x71};
+                                     //   0     1     2     3     4     5     6     7     8     9     A     B     C     D     E     F   
+    static char displayFlag = 0; // static variable: doesn't loose its
+                                // value between calls to function
+    unsigned char digit_low = value & 0x0F;
+    unsigned char digit_high = value >> 4;
+    // if "displayFlag" is 0 then send digit_low to display_low
+    if(!displayFlag){
+        LATD = (LATD & 0xFF9F) | 0x0020;
+        digit_low = display7Scodes[digit_low];
+        LATB = (LATB & 0x80FF ) | digit_low << 8;
     }
-
+    // else send digit_high to didplay_high
+    else{
+        LATD = (LATD & 0xFF9F) | 0x0040;
+        digit_high = display7Scodes[digit_high];
+        LATB = (LATB & 0x80FF ) | digit_high << 8;
+    }
+    // toggle "displayFlag" variable
     displayFlag = !displayFlag;
 }
 
-int voltageConversion(int VAL_AD)
-{
-    return (VAL_AD * 33 + 511) / 1023; 
-}
+unsigned char toBcd(unsigned char value){
+	return ((value / 10) << 4) + (value % 10);
+} 
 
-int toBcd(int value)
-{
-    return ((value/10) << 4) + (value % 10);
-}
-
-void delay(int ms)
-{
+//Funcao delay
+void delay(int ms){
     resetCoreTimer();
-    while (readCoreTimer() < 20000);
-}
-#include <detpic32.h>
-
-volatile int adc_value;
-
-int main(void)
-{
-    TRISE = TRISE & 0xFFFE;     // RE0 as output
-    
-    TRISBbits.TRISB4 = 1;       // RB4 digital output disconnected
-    AD1PCFGbits.PCFG4 = 0;      // RB4 configured as analog input (AN4)
-    AD1CON1bits.SSRC = 7;       // Conversion trigger constant
-    AD1CON1bits.CLRASAM = 1;    // Stop conversion when the 1st A/D converter intetupr is generated.
-                                // At the same time, hardware clears ASAM bit
-    AD1CON3bits.SAMC = 16;      // Sample time is 16 TAD (TAD = 100ns)
-    AD1CON2bits.SMPI = 0;       // Interrupt is generated after 1 sample
-    AD1CHSbits.CH0SA = 4;       // analog channel input 4
-    AD1CON1bits.ON = 1;         // Enable the A/d configuration sequence
-
-    // Enable interrupts ADC
-    IPC6bits.AD1IP = 2;         // configure priority of A/D interrupts
-    IFS1bits.AD1IF = 0;         // clear A/D interrupt flag
-    IEC1bits.AD1IE = 1;         // enable A/D interrupts
-    
-    EnableInterrupts();
-
-    AD1CON1bits.ASAM = 1;       // Start conversion
-    resetCoreTimer();
-    while (1) { }
-       
-    return 0;
-}
-
-//Interrupt handler
-void _int_(27) isr_adc(void)
-{
-    int time = readCoreTimer();
-
-    LATE = LATE & 0xFFFE;       // LATE0 = 0;
-    adc_value = ADC1BUF0;
-    LATE = LATE | 0x0001;       // LATE0 = 1;
-
-    time *= 50;                 // Convert to ns (PBClk -> 20Mhz -> 50ns)
-    time -= 3600;               // Remove the time kown for conversion
-    printInt10(time);
-    putChar('\n');
-
-    resetCoreTimer();
-    AD1CON1bits.ASAM = 1;       // Start conversion
-    IFS1bits.AD1IF = 0;
+    while(readCoreTimer()<20000 * ms);
 }

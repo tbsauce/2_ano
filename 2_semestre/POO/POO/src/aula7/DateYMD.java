@@ -2,11 +2,6 @@ package aula7;
 
 public class DateYMD extends Date{
 
-    private int day;
-    private int month;
-    private int year;
-
-
     //constructur
     public DateYMD(int day, int month, int year){
         this.set(day, month, year);

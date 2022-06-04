@@ -126,5 +126,22 @@ public class Date {
         int ano = today.getYear();
         return new Date(day, mes, ano);
     }
+
+    @Override
+    public boolean equals(Object obj){
+        if(obj == null)
+            return false;
+        if(getClass() != obj.getClass())
+            return false;
+        if(obj == this) 
+            return true;
+        Date other = (Date)obj;
+        return this.day == other.day && this.month == other.month && this.year == other.year;
+    }
+
+    @Override
+    public int hashCode(){
+        return this.day *  this.month * this.year;
+    }
 }
 

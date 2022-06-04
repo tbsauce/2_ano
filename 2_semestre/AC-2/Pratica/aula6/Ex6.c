@@ -28,30 +28,30 @@ int main(void){
     	LATD = (LATD & 0xFF9F);
 	 
 	TRISB = (TRISB & 0x80FF) | 0xF;	// Defenir [RB8 - RB14] como saidas
-    	TRISD = (TRISD & 0xFF9F);		// RD5 E RD6 como saídas
+    TRISD = (TRISD & 0xFF9F);		// RD5 E RD6 como saídas
     	
     	int i = 0;
     	char v = 0;
 	 
-	 while(1){
-	 	if(i==0){
-		 	double media = 0;
-		 	AD1CON1bits.ASAM = 1;
-		 	while( IFS1bits.AD1IF == 0);
-		 	int *p = (int *)(&ADC1BUF0);
-		 	for( i = 0; i < 4; i++ ) {
-		 		media += (double)p[i*4];
-		 	}
-		 	media = media / 4;
-		 	v = (media * 33 + 511) / 1023;
-		 	IFS1bits.AD1IF = 0;
-		 }
-		 send2displays(toBcd(v));
-		 delay(10); //100hz
-		 i = (i + 1) % 20; 	//10 * 20 * 5 vezez * 20000 = 20000000 = 1 s 
-	 }
-	 
-	 return 0;
+	while(1){
+	if(i==0){
+		double media = 0;
+		AD1CON1bits.ASAM = 1;
+		while( IFS1bits.AD1IF == 0);
+		int *p = (int *)(&ADC1BUF0);
+		for( i = 0; i < 4; i++ ) {
+			media += (double)p[i*4];
+		}
+		media = media / 4;
+		v = (media * 33 + 511) / 1023;
+		IFS1bits.AD1IF = 0;
+		}
+		send2displays(toBcd(v));
+		delay(10); //100hz
+		i = (i + 1) % 20; 	//10 * 20 * 5 vezez * 20000 = 20000000 = 1 s 
+	}
+	
+	return 0;
 
 }
 
@@ -87,7 +87,7 @@ void delay(int ms){
 }
 
 unsigned char toBcd(unsigned char value)
- {
+{
 	return ((value / 10) << 4) + (value % 10);
- } 
- 
+} 
+

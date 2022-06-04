@@ -2,7 +2,11 @@ package aula7;
 
 import java.time.LocalDate;
 
-public abstract class Date{
+public abstract class Date implements Comparable<Date>{
+
+    protected int day;
+    protected int month;
+    protected int year;
 
     //set variables
     public abstract void set(int day, int month, int year);
@@ -73,6 +77,34 @@ public abstract class Date{
         int mes = today.getMonthValue();
         int ano = today.getYear();
         return new DateYMD(day, mes, ano);
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if(obj == null)
+            return false;
+        if(getClass() != obj.getClass())
+            return false;
+        if(obj == this) 
+            return true;
+        Date other = (Date)obj;
+        return this.day == other.day && this.month == other.month && this.year == other.year;
+    }
+
+    @Override
+    public int hashCode(){
+        return this.day *  this.month * this.year;
+    }
+
+    
+    @Override
+    public int compareTo(Date o){
+        if(getday() == o.getday())
+            return 0;
+        if(getday() > o.getday())
+            return -1;
+        else 
+            return 1;
     }
 }
 
