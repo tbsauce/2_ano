@@ -2,11 +2,14 @@
 
 int main(void)
 {
+    //T3 a 25
     // Configure Timers T1 and T3 with interrupts enabled)
     // T3CONbits.TCKPS = 4;        
     // PR3 = 49999;                         
     // TMR3 = 0;                   
     // T3CONbits.TON = 1;
+
+    //T3 a 50
     T3CONbits.TCKPS = 3;        
     PR3 = 50000;                         
     TMR3 = 0;                   

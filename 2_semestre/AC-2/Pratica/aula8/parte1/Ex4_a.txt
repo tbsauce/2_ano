@@ -1,0 +1,30 @@
+--------------------------Timer 3 tyoe B--------------------------
+type B -> 1, 2, 4, 8, 16, 32, 64 ou 256.
+k_prescaler = 20 000 000 / (65535+1) * fout(25Hz) = 12 -> 16
+   
+Prescaler 1:16  -> 4
+
+Fout = 20Mhz / (16 * (x + 1)) = 25Hz
+x = (20000000/(25 * 16)) -1
+PR3 = x = 49999
+
+--------------------------Timer 1 Type A--------------------------
+Type A vai de 1, 8, 64 ou 256
+k_prescaler = 20 000 000 / (65535+1) * fout(5Hz) = 61  -> 64)
+   
+Prescaler 1:64 -> 6
+
+Fout = 20Mhz / (16 * (x + 1)) = 25Hz
+x = (20000000/(5 * 16)) -1
+PR3 = x = 62499
+
+
+pq que no 4_b aparece o numero 3 9 vezes na primeira vez e na outras da 10
+
+ordem do codigo enable interrupts e depois asam
+
+
+ 
+
+
+
