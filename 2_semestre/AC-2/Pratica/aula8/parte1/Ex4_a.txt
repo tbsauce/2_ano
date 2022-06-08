@@ -31,11 +31,6 @@ x = (20000000/(5 * 64)) -1
 PR3 = x = 62499
 
 
-pq que no 4_b aparece o numero 3 9 vezes na primeira vez e na outras da 10
-
-ordem do codigo enable interrupts e depois asam
-
-
  
 
 

@@ -31,7 +31,7 @@ int main(void)
     IFS0bits.T1IF = 0;      // Reset timer T1 interrupt flag 
     
 
-    //Perguntar ao sor se trocar as prioridades n muda e n entendo pq que n interessa
+    
     EnableInterrupts();         // Global Interrupt Enable
     while(1);
     return 0;
