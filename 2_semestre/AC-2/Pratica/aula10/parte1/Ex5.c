@@ -2,10 +2,11 @@
 
 void delay(int ms);
 void putc(char byte);
-void putstr(char *str);
+char getc(void);
 
 int main(void) {
-    // Configure UART2:
+
+    // Configure UART2 (115200, N, 8, 1)
     U2BRG = 10;      // U2BRG = (20MHz / (16 * 115200)) – 1  = 10
     // 2 – Configure number of data bits, parity and number of stop bits --> procurar por parity
     U2MODEbits.PDSEL = 0;       // no parity
@@ -16,35 +17,30 @@ int main(void) {
     U2STAbits.URXEN = 1;        // Enable receiver modules
     // 4 – Enable UART2 (see register U2MODE)
     U2MODEbits.ON = 1;          // Enable UART2
+    
 
     while(1){
-        putstr("String de teste\n");
-        // wait 1 s
-        delay(1000);
+        // Read character using getc()
+        // Send character using putc()
+        putc(getc());
     }
     return 0;
 }
 
-void putstr(char *str){
-    //Maneira de burro
-    // int i;
-    // for ( i = 0; i < 100; i++){
-    //     putc(str[i]);
-    //     if(str[i] == '\0')
-    //         break;
-    // }
-    while (*str != '\0'){
-        putc(*str); 
-        str++;
-    }
-    
-}
 
 void putc(char byte) {
-    while(U2STAbits.UTXBF == 1);// wait while UART2 UTXBF == 1
+    // wait while UART2 UTXBF == 1
+    while(U2STAbits.UTXBF == 1);
     // Copy "byte" to the U2TXREG register
     U2TXREG = byte;
-} 
+}
+
+char getc(void){
+    // Wait while URXDA == 0
+    while(U2STAbits.URXDA == 0);
+    // Return U2RXREG
+    return U2RXREG;
+}
 
 void delay(int ms) {
     resetCoreTimer();

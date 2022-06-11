@@ -24,7 +24,7 @@ PR3 = x = 49999
 Type A vai de 1, 8, 64 ou 256
 k_prescaler = 20 000 000 / (65535+1) * fout(5Hz) = 61  -> 64)
    
-Prescaler 1:64 -> 6
+Prescaler 1:64 -> 2
 
 Fout = 20Mhz / (64 * (x + 1)) = 5Hz
 x = (20000000/(5 * 64)) -1

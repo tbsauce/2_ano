@@ -16,7 +16,7 @@ int main(void)
     T3CONbits.TON = 1;
 
 
-    T1CONbits.TCKPS = 6;        
+    T1CONbits.TCKPS = 2;        
     PR1 = 62499;                         
     TMR1 = 0;                   
     T1CONbits.TON = 1;
