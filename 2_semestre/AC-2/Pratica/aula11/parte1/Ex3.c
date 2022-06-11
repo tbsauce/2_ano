@@ -43,11 +43,12 @@ void _int_(32) isr_uart2(void) {
     if (IFS1bits.U2RXIF == 1) {
         // Read character from FIFO (U2RXREG)
         char c = U2RXREG;
-        if(c == 't')
+        //Liga o LED
+        if(c == 'T')
             LATC = (LATC & 0xBFFF) | 0x4000;
-        if(c == 'r') 
+        //Desliga o LED
+        if(c == 't') 
             LATC = (LATC & 0xBFFF);
-        //putc(c);
         // Clear UART2 Rx interrupt flag
         IFS1bits.U2RXIF = 0;
     }
