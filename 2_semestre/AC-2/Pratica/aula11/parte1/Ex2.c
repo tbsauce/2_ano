@@ -27,7 +27,7 @@ int main(void)
     //clear Interrupt Flag bit U2RXIF (register IFS1)
     IFS1bits.U2RXIF = 0;
     //define RX interrupt mode (URXISEL bits)
-    U2STAbits.URXISEL=1;        //has 1 character
+    U2STAbits.URXISEL=0;        //has 1 character
     // Enable global Interrupts
     EnableInterrupts();
     while(1);

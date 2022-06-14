@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class Ex4 {
     public static void main(String[] args) throws IOException{
-        Scanner input = new Scanner(new FileReader("words.txt"));
+        Scanner input = new Scanner(new FileReader("aula10/words.txt"));
         HashSet <String> list = new HashSet<>();
 
         while (input.hasNext()) {

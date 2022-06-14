@@ -5,31 +5,28 @@ import java.io.IOException;
 
 public class Ex1 {
     public static void main(String argrs[]) throws IOException{
-        Scanner file = new Scanner(new FileReader("major.txt"));
+        Scanner file = new Scanner(new FileReader("aula11/major.txt"));
         HashMap <String, TreeMap<String, Integer>> list = new HashMap<>();
-        //file.useDelimiter("[\\p{Punct}\\p{Space}]+");
-        file.useDelimiter("[^\\p{IsAlphabetic}]+"); // isto ou o outro
+        file.useDelimiter("[^\\p{IsAlphabetic}0-9]+");
+        String save = "";
         while (file.hasNext()) {
             String word = file.next();
+            
             if(!(word.length() < 3)){
-                String par="";
-                TreeMap <String, Integer> counts;
-                if(word.length() % 2 == 0)
-                    par = word;
-                if(list.containsKey(par)){
-                    counts = new TreeMap<>();
-                    if(counts.isEmpty())
-                        counts.put(word, 1);
-                    else if(counts.containsKey(word)){
-
-                    }
+                if(list.get(save)!= null){
+                    TreeMap<String, Integer> a = list.get(save);
+                    if(a.containsKey(word))
+                        a.put(word, a.get(word) + 1);
+                    else
+                        a.put(word, 1);
                 }
-                else if(list.containsKey(par) && !word.equals(par))
-                    counts = new TreeMap<>();
-                    counts.put("word", 1);
-                    list.put(par, counts); 
+                save = "";
+                if(word.length() % 2 == 0){
+                    save = word;
+                    if(!list.containsKey(word))
+                        list.put(word, new TreeMap<>());
+                }
             }
-
             
         }
 
