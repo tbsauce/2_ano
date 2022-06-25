@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>PET+</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+
+        <!-- Custom styles for this template-->
+        <link href="css/sb-admin-2.css" rel="stylesheet">
+
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        
+
+    </head>
+
+<body class="bg-gradient-success">
+
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">PET+</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars ms-1"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="funcionarios.html#funcionarios" role="button" data-bs-toggle="dropdown" aria-expanded="false">Funcionários</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="funcionarios.html#veterinario">veterinarios</a></li>
+                            <li><a class="dropdown-item" href="funcionarios.html#nutricionista">Nutricionistas</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link " id ="navlogin" onload="logintext()" href="login.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-6">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-block">
+                                <img class="" src="" id="imgPrevie" width="100%" height="100%"alt="Preview" />
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h1 text-warning mb-5" id = "name_pessoa">
+                                        </h1>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 mb-4 h6 text-gray-900 mb-3">
+                                            Phone:
+                                        </div>
+                                        <div class="col-sm-6">
+                                            958 685 988
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 mb-4 h6 text-gray-900 mb-3">
+                                            Email:
+                                        </div>
+                                        <div class="col-sm-6">
+                                            useer@ua.pt
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 mb-4 h6 text-gray-900 mb-3">
+                                            Address:
+                                        </div>
+                                        <div class="col-sm-6">
+                                            Aveiro, Rua do Loureiro, 3871-895
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 mb-4 h6 text-gray-900 mb-3">
+                                            Data de nascimento:
+                                        </div>
+                                        <div class="col-sm-6">
+                                            5-11-1999
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 mb-4 h6 text-gray-900 mb-3">
+                                            Plano:
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <a id="btn1">Standart</a>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-4 mb-4 h6 text-gray-900 mb-3">
+                                            Change Photo:
+                                        </div>
+                                        <div class="col-sm-7" id="pet_pic">
+                                            <a class="btn btn-primary btn-user btn-block" id="button_">
+                                            <input type="file" id="myFileInput" style="display:none;">
+                                            <label for="myFileInput">Choose image</label>
+                    
+                                            </a>
+
+                                        </div>
+                                    </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4 mb-4 h6 text-gray-900 mb-3">
+                                                
+                                            </div>
+                                            <div class="col-sm-7" id="pet_pic">
+                                            <a class="btn btn-primary btn-user btn-block" id="button_" href="Pessoa.html" >
+                                            Save
+                                        </a>
+                                        
+                                    </div>
+                                </div>
+                                    <div class="form-group row">
+                                        <button class="btn btn-outline-primary btn-xl text-uppercase" onclick="openForm()" id="btn">Change Plan</button>
+                                    </div>
+                                    <div class="form-group row">
+                                        <a href="index.html"><button class="btn btn-outline-danger btn-xl text-uppercase" style="width: 105.5%; margin-left: -2.5%;" onclick="logOut()"  id="btnlogout">Log Out</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row p-5">
+                            <div class="text-center">
+                                <h1 class="h1 text-gray-900 mb-4">Your Pets!</h1>
+                            </div>
+                            <!-- Portfolio Grid-->
+                            <section class="page-section bg-light my-0" id="portfolio">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-sm-6 mb-0">
+                                            <!-- Portfolio item 1-->
+                                            
+                                            <div class="portfolio-item" >                
+                                                <a href="Pet.html" class="portfolio-link"  >
+                                                    <div class="portfolio-hover">
+                                                        <div class="portfolio-hover-content"></div>
+                                                    </div>
+                                                    <img  class="img-fluid" src="assets/img/portfolio/1.jpg" alt="..." />
+                                                </a>
+                                                <div class="portfolio-caption">
+                                                    <div class="portfolio-caption-heading">Flash</div>
+                                                    <div class="portfolio-caption-subheading text-muted">8 years</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-6 mb-0" >
+                                            <!-- Portfolio item 2-->
+                                            <div class="portfolio-item">
+                                                <a class="portfolio-link" onclick="openForm1()">
+                                                    <div class="portfolio-hover">
+                                                        <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                                    </div>
+                                                    <img class="img-fluid" src="assets/img/portfolio/2.jpg" alt="..." />
+                                                </a>
+                                                <div class="portfolio-caption">
+                                                    <div class="portfolio-caption-heading" id="adicionar-animal">Adicionar</div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="form-popup" id="myForm">
+        <div class="container">
+
+            <div class="card o-hidden border-0 shadow-lg my-6 mx-6">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Select a payment method</h1>
+                                </div>
+                                <form class="user">
+                                    <a onclick="closeForm()" class="btn btn-primary btn-user btn-block">
+                                        <i onclick="closeForm()" class="fab fa-cc-MBway"></i> 
+                                        MB Way
+                                    </a>
+                                    <a onclick="closeForm()" class="btn btn-secondary btn-user btn-block">
+                                        <i onclick="closeForm()" class="fa-brands fa-paypal"></i> 
+                                        PayPal
+                                    </a>
+                                    <a onclick="closeForm()" class="btn btn-dark btn-user btn-block">
+                                        <i onclick="closeForm()" class="fab fa-cc-visa"></i> 
+                                        Visa
+                                    </a>
+                                    <a onclick="closeForm()" class="btn btn-danger btn-user btn-block">
+                                        <i onclick="closeForm()" class="fab fa-cc-mastercard"></i> 
+                                        MasterCard
+                                    </a>
+                                    <a href="Pessoa.html" class="btn btn-danger btn-user btn-block">
+                                        <i onclick="closeForm()"></i> 
+                                        Cancel
+                                    </a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </div>
+    </div>
+    <form action="new_pet.html">
+      <div class="form-popup2" id="myForm1">
+        <div class="container1">
+
+            <div class="card o-hidden border-0 shadow-lg my-6 mx-6">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Put animal info</h1>
+                                </div>
+                                <form class="user">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-user"
+                                            id="aname" aria-describedby="emailHelp"
+                                            placeholder="Enter Animal Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-user"
+                                            id="aweight" aria-describedby="emailHelp"
+                                            placeholder="Enter Animal Weight">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-user"
+                                            id="aage" aria-describedby="emailHelp"
+                                            placeholder="Enter Animal Age">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-user"
+                                            id="araca" aria-describedby="emailHelp"
+                                            placeholder="Enter Animal Breed">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-user"
+                                            id="adiagnose" aria-describedby="emailHelp"
+                                            placeholder="Enter Animal Diagnose">
+                                    </div>
+                                    <a class="btn btn-primary btn-user btn-block" id="button_add" onclick="passvalues()" >
+                                        Add Pet
+                                    </a>
+                                    <a class="btn btn-primary btn-user btn-block" id="btn-pet" href="new_pet.html" >
+                                        See Pet Profile
+                                    </a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </div>
+      </div>
+    </form>
+      
+    <script>
+        const btn = document.getElementById("btn");
+        const btn1 = document.getElementById("btn1");
+        btn.addEventListener("click", ()=>{
+
+        if(btn1.innerText === "Premium"){
+            btn1.innerText = "Standart";
+        }else{
+            btn1.innerText= "Premium";
+        }
+    });
+    </script>
+
+<script>
+    function openForm() {
+      document.getElementById("myForm").style.display = "block";
+    }
+
+    function openForm1() {
+      document.getElementById("myForm1").style.display = "block";
+    }
+    
+    function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+    }
+    function closeForm1() {
+        document.getElementById("myForm1").style.display = "none";
+    }
+    </script>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    <script src="js/js_info.js"></script>
+
+    <script>
+            function passvalues(){
+
+                
+                var name=document.getElementById("aname").value;
+                var weight=document.getElementById("aweight").value;
+                var age=document.getElementById("aage").value;
+                var breed=document.getElementById("araca").value;
+                var diagnose=document.getElementById("adiagnose").value;
+                localStorage.setItem("textvalue",name);
+                localStorage.setItem("textvalue1",weight);
+                localStorage.setItem("textvalue2",age);
+                localStorage.setItem("textvalue3",breed);
+                localStorage.setItem("textvalue4",diagnose);
+                return false;
+            }
+    </script>
+    <script>
+        document.querySelector("#myFileInput").addEventListener("change", function(){
+            const reader = new FileReader();
+    
+            reader.addEventListener("load", () => {
+                localStorage.setItem("recent-image1", reader.result);
+            });
+    
+            reader.readAsDataURL(this.files[0]);
+        });
+    
+        document.addEventListener("DOMContentLoaded", () => {
+            const recentImageDataUrl1 = localStorage.getItem("recent-image1");
+    
+            if (recentImageDataUrl1){
+                document.querySelector("#imgPrevie").setAttribute("src", recentImageDataUrl1);
+            }
+        });
+    </script>
+</body>
+
+</html>

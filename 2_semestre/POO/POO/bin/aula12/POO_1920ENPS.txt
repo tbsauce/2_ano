@@ -1,0 +1,18 @@
+
+Al?nea 1) ----------------------------------
+
+Livro 1 tem 4 autores
+Livro 2 tem 3 autores
+TOTAL DE PRODUTOS DO MERCADO: 0
+Descri??o de electr1 :Frigor?fico:Bosch/XPTO
+AUTORES DE Livro 1: [Autor 1 ( 2000-), , Autor 2 ( 2000-), , Autor 3 ( 2010-), , Autor 4 ( 2018-), ]
+TOTAL DE PRODUTOS DO MERCADO: 557
+Unidades insuficientes! S? tem 2 em stock.
+Vendidos 100 unidades de "Livro 2". Passou a ter 350
+TOTAL DE PRODUTOS DO MERCADO: 457
+
+E18 Frigor?fico:Bosch/XPTO   0 959.4E20 Fog?o:AEG/XYZ   0 520.29E24 Televisor:LG/MODEL X   5 553.5L14 Livro 1   100 24.0L16 Livro 2   350 36.8T22 Motorola/XWZ Model A   2 688.8
+Informa??o sobre Frigor?fico:
+Electrodomestico [E18 Frigor?fico Bosch XPTO A 1000.0 W]
+Informa??o sobre Telem?vel:
+null

@@ -88,6 +88,8 @@ void send(unsigned char value){
     displayFlag = !displayFlag;
 }
 
+
+
 void delay(int ms){
 	resetCoreTimer();
 	while(readCoreTimer() < ms);
