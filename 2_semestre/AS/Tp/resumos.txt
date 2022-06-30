@@ -1,0 +1,53 @@
+Resunos do Diagramas:
+
+Activity Diagram/fluxo de Atividade:
+
+sao diagramas que descrevem a ordem das atividades.
+Bastante bons para descrever atividades paralelas.
+
+--------------
+Use Case Diagram/Modelo parcial de casos de utilização:
+
+Usado para listar interações de uma "role" de um ator.
+Bom para definir, clarificar e organizar deveres de cada pessoa.
+
+Tem 3 objetivos:
+-organiza os requisitos funcionais
+-Modela os objetivos de cada ator
+-descreve os eventos principais e possiveis alternativas
+
+------------
+
+Class Diagram
+usado para definir atributos classes e operações
+
+-descrever o systema estatico
+-modelar a colaboracao entre elementos
+-descrever funcoes do sistema
+-construcao software de aplicacoes object oriented
+-fazer classes para futura referencia
+
+-------------
+
+Sequence Diagram
+diagramas apra msotrar a time line de um sistema e interacos
+entre agentes	
+
+-----------
+
+Package Diagram:
+
+-estruturar packages 
+
+-----------
+Component Diagram
+
+mostar a estrutura de relacionamento entre componentes
+(componestes sao objetos classes funcoes)
+
+
+--------
+
+Deployment Diagram
+
+
