@@ -40,18 +40,53 @@ Para que pacotes vindos da vlan 6 sejam obrigados a entrar neste tunel e necessa
 
 
 10 janeiro 2020-----------------------------------
-1.A redes de Transito reencaminham as As internas e exeternas e não transito so as internas.
+1.A redes de Transito anuncia as redes publicas e privadas e não transito apenas as privadas.
 
 2.
 a)
 Preferencia local. 
-Todos os anunciso que venham de C cola se uma preferencia local alta de B media e depois do A minima.
+Todos os anuncios que venham de C cola se uma preferencia local alta de B media e depois do A minima.
 
 b)
-n sei se sai next
+Usar um filtro par aver se passa no As que usa um satelite. E aumenta a preferencia local do outro.
 
 c)
-Tem de ser usar filtering para saber se vem de A ou B. caso n tenha passsado por A aumentar a local preference do A para que este passe em A.
+Aumentando a preferencia local de A.
 
 d)
 Tem de ser usar filtering para impedir que operadores Russos ou EUA chegem ao a destino vindos do brazil. Para isto tem de ser ver se no AS-Path copmeca no Brazil e se passa por algum destes locais.
+
+GGs faaz tu o resto o boi
+
+14 janeiro 2016-----------------------------------
+
+1.
+Uma relação de vizinhança BGP é iniciada por um dos routers abrindo uma sessão TCP para o endereço do vizinho explicitamente configurado. As primeiras mensagens BGP (sobre TCP) trocadas são as massagens de OPEN que estabelecem a vizinhança BGP (comunciando os números dos AS e opcionalmente definindo as capacidades BGP de cada um). Após o estabelecimento da vizinhança os routers vão trocar rotas BGP (e respetivos atributos) usando mensagens UPDATE. Após a troca de rotas serão periodicamente trocadas mensagens KEEPALIVE para manter a vizinhança (e sessão TCP) ativa. Em caso de erro serão enviadas mensagens NOTIFICATION para notificar o vizinho do respetivo erro.
+
+2.
+a)
+E necessario aplicar um Filtro no Protocolo Bgp, e todos os anúncios de redes IP Japonesas (pré-conhecidas ou redes cujo o atributo BGP AS_PATH comece por um número de uma AS Japonês) e cujo o atributo BGP AS_PATH contenha números de AS Turcos ou Russos deverão ser rejeitadas/negadas (deny). Os números dos AS e respetivos “donos” são públicos e acessíveis (ex: base de dados do RIPE). 
+
+b)
+Todos rotas recebidos do vizinho sem limitações de tráfego deverão ter uma preferência local maior.
+
+c)
+Como a escolha do caminho depende de informação remota não acessível nos anúncios de rotas, deverá contratualizar-se com os operadores vizinhos a marcação dos anúncios BGP com uma comunidade (atributo COMMUNITY) de acordo com o link usado. Localmente, para todos os anúncios recebidos do vizinho em causa, e em função da comunidade (caso exista nos anúncios) deverá definir-se uma preferência local maior ou menor (de acordo com o link usado remotamente).
+
+3.
+a)
+O propósito do LDP é a descoberta de LSR (Label Switching Routers) vizinhos e com eles definir LSP (Label Switched Path)s para todas as redes IP conhecidas. O LDP no processo de descoberta de LSR vizinhos usa mensagens Hello (UDP) enviadas em multicast. Após a descoberta de um vizinhos, um router cria e mantém uma sessão LDP usando mensagens Initialization e KeepAlive. De seguida usando mensagens Address anuncia os endereços IP dos seus interfaces. Depois, para cada rede IP que conhece escolhe um label e anuncia-o para os vizinhos usando mensagens Label Mapping. Existem ainda outras mensagens de advertisment de labels e notificação de erros.
+
+b)
+O LDP não suporta reserva de recursos e engenharia de tráfego (TE).
+
+c)
+Deverá ser ativado o protocolo RSVP-TE em todos os interfaces do domínio MPLS, definindo a largura de banda reservável no total e por fluxo. Igualmente é preciso ativar as extensões TE de um protocolo IGP (ex:OSPF-TE ou ISIS-TE) para propagar a informação sobre as capacidades dos diferentes interfaces.
+
+d) n bro
+
+N percebo um crlh gl
+
+e) nha
+
+4.
