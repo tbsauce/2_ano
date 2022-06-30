@@ -1,0 +1,57 @@
+8 Setembro 2021--------------
+
+1. As vlnas end to end sao 1,6 e 10. Uma vez que estas conseguem sair do seu edificio conectando se diretamente com o terminal destino.
+
+2. Irá exestir duas rotas de omissão uma pelo router A e outra pelo router B, ambas as rotas tem custo 70 uma vez que estas estam direcionadas para ISP1 de custo 50+10+10. O ISP1 e a unica rota de omissão dos routers A e B visto que este tem menor custo que ISP2.
+
+3.Para que o trafego seja encaminhado %50 por um router e 50% por outro e necessario configirar ISP1 e ISP2 para que as suas metricas sejam iguais e certeficar que o tipo de ambas seja igual 1/2. Por exemplo ambas 50(tipo1) ou 100(tipo2).
+
+4. nolo sai bitche.
+
+5.Para Que haja Interligação ao edificio antigo e necessario que a interfases de C1 e C2 ligadas ao edifico antigo tenham Rip configurado.
+  De seguida estes tem de fazer redestribuição das rotas aprendidas para o resto da rede.
+  E por Fim o C1 e C2 teram de anunciar as saus rotas de omissão para o edificio, se or dinamico,ou tem de ser configurado manualmente.
+ 
+6. Será necessario Criar 8 tuneis em F1, F2, F3 e f4 para o local onde será feita a inspeção neste caso no router A ou B.
+Para que pacotes vindos da vlan 6 sejam obrigados a entrar neste tunel e necessario criar politicas que reencaminhem pacotes da vlan 6 a entrar no tunel.
+
+7. ta foda n sai cara
+
+8. n sai tambem
+
+16 junho 2021----------------------------------------
+
+1. A vlan6 tem conecção com todos os terminais da Vlan6. Ao fazer broadcast este cheagara a todos os equipamentos de vlna6.
+
+2. tera 4 rotas de omissao esta terao todas custo de 53. Pois estaram todas encaminhadas para o router ISP1 com custo menor que ISP2 que e de 50 mais s saltos ISP1-> royterA/B -> Router C1/C2.
+
+3. Em primeiro lugar e necessario igualar a metrica para ambos os routers e e necesario que estes tenham um type igual. Neste caso poderiam ambos ser 50 type 1.
+Para alem disto em caso de falha e preciso configurar uma rota estatica configurando esta com custo admistrativo superior a ospf para o ISP3, que será usada em caso falha por parte dos routers ISP1 e ISP2, isto e possivel pois custo admistratico do ospf e menor que o estatico logo o ospf e prioritario.
+
+4. n precisa velhote podgi passar a frentxi
+
+5.Para Que haja Interligação ao edificio antigo e necessario que a interfases de C1 e C2 ligadas ao edifico antigo tenham Rip configurado.
+  De seguida estes tem de fazer redestribuição das rotas aprendidas para o resto da rede.
+  E por Fim o C1 e C2 teram de anunciar as saus rotas de omissão para o edificio, se or dinamico,ou tem de ser configurado manualmente.
+
+6. A reposta e esta so que com o antigo
+Será necessario Criar 8 tuneis em F1, F2, F3 e f4 para o local onde será feita a inspeção neste caso no router A ou B.
+Para que pacotes vindos da vlan 6 sejam obrigados a entrar neste tunel e necessario criar politicas que reencaminhem pacotes da vlan 6 a entrar no tunel.
+
+
+10 janeiro 2020-----------------------------------
+1.A redes de Transito reencaminham as As internas e exeternas e não transito so as internas.
+
+2.
+a)
+Preferencia local. 
+Todos os anunciso que venham de C cola se uma preferencia local alta de B media e depois do A minima.
+
+b)
+n sei se sai next
+
+c)
+Tem de ser usar filtering para saber se vem de A ou B. caso n tenha passsado por A aumentar a local preference do A para que este passe em A.
+
+d)
+Tem de ser usar filtering para impedir que operadores Russos ou EUA chegem ao a destino vindos do brazil. Para isto tem de ser ver se no AS-Path copmeca no Brazil e se passa por algum destes locais.
