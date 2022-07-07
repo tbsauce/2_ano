@@ -1,3 +1,7 @@
+Testes TDD
+Em primeira instância, torna o processo mais confiável, mas reduz custos, pois desenvolvemos e já sabemos o erro, pois como os testes são criados antes do processo de desenvolvimento, conseguimos testar constantemente. Outro ponto é que se os testes foram criados, isso quer dizer que foram entendidas as regras de negócio durante a fase de desenvolvimento dos testes unitários.
+criamos um teste -> Fazemos a codificação para passar no teste -> Refatoramos nosso código.
+-------------------
 Resunos do Diagramas:
 
 Activity Diagram/fluxo de Atividade:
