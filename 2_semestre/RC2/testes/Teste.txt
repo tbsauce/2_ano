@@ -51,7 +51,16 @@ b)
 n sei se sai next
 
 c)
-Tem de ser usar filtering para saber se vem de A ou B. caso n tenha passsado por A aumentar a local preference do A para que este passe em A.
+Tem de ser usar filtering em todos os anuncios bgps recebidos. Caso não tenha passsado por A aumentar a local preference do A para que este passe em A.
 
 d)
 Tem de ser usar filtering para impedir que operadores Russos ou EUA chegem ao a destino vindos do brazil. Para isto tem de ser ver se no AS-Path copmeca no Brazil e se passa por algum destes locais.
+
+3.
+a)
+Para comecar sao trocadas mensagens udp, que sao hello messages para anunciar a todos os routers que este pode fazer trocas LDP.
+De Seguida e estabelecidade uma sessao ldp por tcp, depois desta estar estabelecida e mandandado um inicialization message para inicializar e keep alive periodicos para manter a sessao.
+
+b)
+
+c) chupamos
