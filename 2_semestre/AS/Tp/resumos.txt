@@ -1,57 +1,26 @@
 Testes TDD
 Em primeira instância, torna o processo mais confiável, mas reduz custos, pois desenvolvemos e já sabemos o erro, pois como os testes são criados antes do processo de desenvolvimento, conseguimos testar constantemente. Outro ponto é que se os testes foram criados, isso quer dizer que foram entendidas as regras de negócio durante a fase de desenvolvimento dos testes unitários.
 criamos um teste -> Fazemos a codificação para passar no teste -> Refatoramos nosso código.
--------------------
-Resunos do Diagramas:
 
-Activity Diagram/fluxo de Atividade:
+Back Logs
+Os itens a trabalhar estão ordenados por prioridade (topo → prioridade mais elevada);
+As histórias de utilização (user stories) oferecem geralmente um nível de detalhe adequado para serem usadas como entradas do backlog.
 
-sao diagramas que descrevem a ordem das atividades.
-Bastante bons para descrever atividades paralelas.
+Agile manifest 	
+individuals and interactions over processes and tools; working software over comprehensive documentation; customer collaboration over contract negotiation; and. responding to change over following a plan.
 
---------------
-Use Case Diagram/Modelo parcial de casos de utilização:
+Modelos
+https://brogramo.com/how-do-functional-structural-and-behavioral-models-work-together-to-describe-a-whole-system/
 
-Usado para listar interações de uma "role" de um ator.
-Bom para definir, clarificar e organizar deveres de cada pessoa.
+Requisitos de usabilidade -> Capturam as metas de usabilidade e as medidas associadas para um produto. – Ex.: Características do sistema/produto que contemplem as metas de usabilidade (eficácia, eficiência, segurança, utilidade etc.)
 
-Tem 3 objetivos:
--organiza os requisitos funcionais
--Modela os objetivos de cada ator
--descreve os eventos principais e possiveis alternativas
+Requesitos funcionais -> são variadas as funções e serviços que um sistema pode fornecer ao seu cliente
 
-------------
+Requisitos não funcionais -> são praticamente todas as necessidades que não podem ser atendidas através de funcionalidades.
+Geralmente mensurável, os requisitos não funcionais definem características e impõe limites do sistema como método de desenvolvimento, tempo, espaço, Sistema Operacional, dentre outros e cuja medida pode ser determinada é importante que se associe essa medida ou referência à cada requisito não funcional. 
 
-Class Diagram
-usado para definir atributos classes e operações
+O que são regras de negócio? O termo regras de negócio refere-se às diretrizes que definem ou restringem ações, mostrando como as operações devem ser conduzidas e se há algum limite nessa aplicação.
 
--descrever o systema estatico
--modelar a colaboracao entre elementos
--descrever funcoes do sistema
--construcao software de aplicacoes object oriented
--fazer classes para futura referencia
+Em uma arquitetura de três camadas, a aplicação é organizada em três unidades de distribuição: Camada de interface com usuário; Camada de negócios, com a lógica da aplicação; e. Camada de dados, com funcionalidade de armazenamento e recuperação.
 
--------------
-
-Sequence Diagram
-diagramas apra msotrar a time line de um sistema e interacos
-entre agentes	
-
------------
-
-Package Diagram:
-
--estruturar packages 
-
------------
-Component Diagram
-
-mostar a estrutura de relacionamento entre componentes
-(componestes sao objetos classes funcoes)
-
-
---------
-
-Deployment Diagram
-
-
+A flowchart is a type of diagram that represents a workflow or process

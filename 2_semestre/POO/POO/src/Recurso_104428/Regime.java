@@ -1,0 +1,5 @@
+package Recurso_104428;
+
+public enum Regime{
+    PEQUENOALMOCO,MEIAPENSAO,PENSAOCOMPLETA,TUDOINCLUIDO
+}
